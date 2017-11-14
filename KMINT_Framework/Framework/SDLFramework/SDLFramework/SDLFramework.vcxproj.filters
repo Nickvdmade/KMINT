@@ -20,6 +20,21 @@
     <ClCompile Include="FWApplication.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Edge.cpp">
+      <Filter>Week1</Filter>
+    </ClCompile>
+    <ClCompile Include="Graph.cpp">
+      <Filter>Week1</Filter>
+    </ClCompile>
+    <ClCompile Include="Vertex.cpp">
+      <Filter>Week1</Filter>
+    </ClCompile>
+    <ClCompile Include="Cow.cpp">
+      <Filter>Week1</Filter>
+    </ClCompile>
+    <ClCompile Include="Hare.cpp">
+      <Filter>Week1</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="SDL2.dll" />
@@ -33,6 +48,21 @@
     </ClInclude>
     <ClInclude Include="IGameObject.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Edge.h">
+      <Filter>Week1</Filter>
+    </ClInclude>
+    <ClInclude Include="Graph.h">
+      <Filter>Week1</Filter>
+    </ClInclude>
+    <ClInclude Include="Vertex.h">
+      <Filter>Week1</Filter>
+    </ClInclude>
+    <ClInclude Include="Cow.h">
+      <Filter>Week1</Filter>
+    </ClInclude>
+    <ClInclude Include="Hare.h">
+      <Filter>Week1</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
