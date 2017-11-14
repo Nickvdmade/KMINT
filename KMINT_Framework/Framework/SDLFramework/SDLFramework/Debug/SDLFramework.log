@@ -1,3 +1,4 @@
-﻿  Graph.cpp
+﻿  Main.cpp
+c:\users\maikel\source\repos\kmint\kmint_framework\framework\sdlframework\sdlframework\main.cpp(516): warning C4065: switch statement contains 'default' but no 'case' labels
   SDLFramework.vcxproj -> C:\Users\MAIKEL\Source\Repos\KMINT\KMINT_Framework\Framework\SDLFramework\Debug\SDLFramework.exe
   SDLFramework.vcxproj -> C:\Users\MAIKEL\Source\Repos\KMINT\KMINT_Framework\Framework\SDLFramework\Debug\SDLFramework.pdb (Partial PDB)

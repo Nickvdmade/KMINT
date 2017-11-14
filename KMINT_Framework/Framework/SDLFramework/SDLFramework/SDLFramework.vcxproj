@@ -89,7 +89,7 @@
     <ClCompile Include="Edge.cpp" />
     <ClCompile Include="FWApplication.cpp" />
     <ClCompile Include="Graph.cpp" />
-    <ClCompile Include="Hare.cpp" />
+    <ClCompile Include="Rabbit.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Vertex.cpp" />
   </ItemGroup>
@@ -102,9 +102,14 @@
     <ClInclude Include="Edge.h" />
     <ClInclude Include="FWApplication.h" />
     <ClInclude Include="Graph.h" />
-    <ClInclude Include="Hare.h" />
+    <ClInclude Include="Rabbit.h" />
     <ClInclude Include="IGameObject.h" />
     <ClInclude Include="Vertex.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="..\Resources\cow-2.png" />
+    <Image Include="..\Resources\cow.png" />
+    <Image Include="..\Resources\rabbit-3.png" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

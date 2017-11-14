@@ -6,7 +6,7 @@
 #include <time.h>
 #include "Graph.h"
 #include "Cow.h"
-#include "Hare.h"
+#include "Rabbit.h"
 
 Graph FillGraph() 
 {
@@ -491,6 +491,10 @@ int main(int args[])
 	//Graph
 	auto graph = FillGraph();
 
+	//cow & hare
+	auto cow = new Cow(application);
+	auto rabbit = new Rabbit(application);
+
 	//while (true){}
 	while (application->IsRunning())
 	{
@@ -516,8 +520,8 @@ int main(int args[])
 
 		//Week1	
 		graph.DrawGraph(application);
-		
-		
+		cow->Draw();
+		rabbit->Draw();
 		
 		
 		
