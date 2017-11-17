@@ -129,7 +129,7 @@ void FWApplication::DrawTexture(SDL_Texture * texture, int xOffset, int yOffset)
 
 	SDL_SetTextureBlendMode(texture, SDL_BLENDMODE_BLEND);
 	SDL_QueryTexture(texture, NULL, NULL, &rect.w, &rect.h);
-	SDL_RenderCopy(mRenderer, texture, &rect, &rect);
+	SDL_RenderCopy(mRenderer, texture, nullptr, &rect);
 }
 void FWApplication::DrawTexture(SDL_Texture * texture, int xOffset, int yOffset, int width, int height)
 {
