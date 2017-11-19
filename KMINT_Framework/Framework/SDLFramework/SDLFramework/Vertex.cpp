@@ -1,7 +1,7 @@
 #include "Vertex.h"
 
 
-Vertex::Vertex(int xPosition, int yPosition)
+Vertex::Vertex(const int xPosition, const int yPosition)
 {
 	xPosition_ = xPosition;
 	yPosition_ = yPosition;
@@ -11,12 +11,22 @@ Vertex::~Vertex()
 {
 }
 
-const int Vertex::getX()
+int Vertex::GetX() const
 {
 	return xPosition_;
 }
 
-const int Vertex::getY()
+int Vertex::GetY() const
 {
 	return yPosition_;
+}
+
+void Vertex::SetIndex(const int index)
+{
+	index_ = index;
+}
+
+int Vertex::GetIndex() const
+{
+	return index_;
 }

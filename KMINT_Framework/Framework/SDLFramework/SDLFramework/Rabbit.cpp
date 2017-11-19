@@ -14,7 +14,7 @@ Rabbit::~Rabbit()
 	application_->RemoveTexture(texture_);
 }
 
-void Rabbit::Draw()
+void Rabbit::Draw(int xPosition, int yPosition)
 {
-	application_->DrawTexture(texture_, 0, 0);
+	application_->DrawTexture(texture_, xPosition, yPosition, 30, 30);
 }

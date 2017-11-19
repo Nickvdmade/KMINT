@@ -1,4 +1,3 @@
-﻿  FWApplication.cpp
-c:\users\nick\source\repos\kmint\kmint_framework\framework\sdlframework\sdlframework\fwapplication.cpp(333): warning C4838: conversion from 'uint32_t' to 'Uint8' requires a narrowing conversion
-  SDLFramework.vcxproj -> C:\Users\Nick\Source\Repos\KMINT\KMINT_Framework\Framework\SDLFramework\Debug\SDLFramework.exe
-  SDLFramework.vcxproj -> C:\Users\Nick\Source\Repos\KMINT\KMINT_Framework\Framework\SDLFramework\Debug\SDLFramework.pdb (Partial PDB)
+﻿  Main.cpp
+  SDLFramework.vcxproj -> C:\Users\MAIKEL\Source\Repos\KMINT\KMINT_Framework\Framework\SDLFramework\Debug\SDLFramework.exe
+  SDLFramework.vcxproj -> C:\Users\MAIKEL\Source\Repos\KMINT\KMINT_Framework\Framework\SDLFramework\Debug\SDLFramework.pdb (Partial PDB)

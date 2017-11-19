@@ -2,13 +2,16 @@
 class Vertex
 {
 public:
-	Vertex(int, int);
+	Vertex(const int, const int);
 	~Vertex();
 
-	const int getX();
-	const int getY();
+	int GetX() const;
+	int GetY() const;
+	void SetIndex(const int index);
+	int GetIndex() const;
 
 private:
+	int index_;
 	int xPosition_;
 	int yPosition_;
 };

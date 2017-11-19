@@ -108,7 +108,6 @@
   </ItemGroup>
   <ItemGroup>
     <Image Include="..\Resources\cow-2.png" />
-    <Image Include="..\Resources\cow.png" />
     <Image Include="..\Resources\rabbit-3.png" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

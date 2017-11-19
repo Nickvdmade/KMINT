@@ -6,7 +6,7 @@ public:
 	Rabbit(FWApplication*);
 	~Rabbit();
 
-	void Draw();
+	void Draw(int xPosition, int yPosition);
 
 private:
 	FWApplication* application_;

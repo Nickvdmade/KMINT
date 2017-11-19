@@ -17,5 +17,6 @@ public:
 private:
 	std::vector<Vertex*> vertices;
 	std::vector<Edge*> edges;
+	int vIndex_;
 };
 

@@ -69,9 +69,6 @@
     <Image Include="..\Resources\cow-2.png">
       <Filter>Week1</Filter>
     </Image>
-    <Image Include="..\Resources\cow.png">
-      <Filter>Week1</Filter>
-    </Image>
     <Image Include="..\Resources\rabbit-3.png">
       <Filter>Week1</Filter>
     </Image>

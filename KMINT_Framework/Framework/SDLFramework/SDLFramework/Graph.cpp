@@ -4,7 +4,7 @@
 
 Graph::Graph()
 {
-	
+	vIndex_ = 0;
 }
 
 
@@ -14,6 +14,7 @@ Graph::~Graph()
 
 void Graph::addVertex(Vertex* vertex)
 {
+	vertex->SetIndex(vIndex_++);
 	vertices.push_back(vertex);
 }
 
@@ -41,7 +42,7 @@ void Graph::DrawGraph(FWApplication* application)
 	i = 0;
 	for (auto it = begin(vertices); it != end(vertices); ++it, i++)
 	{
-		application->DrawRect(vertices[i]->getX(), vertices[i]->getY(), 10, 10, true);
+		application->DrawRect(vertices[i]->GetX(), vertices[i]->GetY(), 10, 10, true);
 	}
 }
 

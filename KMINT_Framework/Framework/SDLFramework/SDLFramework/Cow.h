@@ -6,7 +6,7 @@ public:
 	Cow(FWApplication*);
 	~Cow();
 
-	void Draw();
+	void Draw(int xPosition, int yPosition);
 
 private:
 	FWApplication* application_;

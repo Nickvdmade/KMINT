@@ -491,9 +491,14 @@ int main(int args[])
 	//Graph
 	auto graph = FillGraph();
 
-	//cow & hare
+	//cow & rabbit
 	auto cow = new Cow(application);
 	auto rabbit = new Rabbit(application);
+	int xCow = 12;
+	int yCow = 564;
+	int xRabbit = 440;
+	int yRabbit = 424;
+
 
 	//while (true){}
 	while (application->IsRunning())
@@ -510,7 +515,12 @@ int main(int args[])
 				break;
 			case SDL_KEYDOWN:
 				switch (event.key.keysym.sym){
+				case SDLK_SPACE: // move cow
+					
 
+					xCow += 10;
+					yCow -= 10;
+					break;
 				default:
 					break;
 				}
@@ -520,8 +530,8 @@ int main(int args[])
 
 		//Week1	
 		graph.DrawGraph(application);
-		cow->Draw();
-		rabbit->Draw();
+		cow->Draw(xCow, yCow);
+		rabbit->Draw(xRabbit, yRabbit);
 		
 		
 		
