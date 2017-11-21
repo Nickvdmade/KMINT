@@ -1,3 +1,11 @@
-﻿  Main.cpp
-  SDLFramework.vcxproj -> C:\Users\MAIKEL\Source\Repos\KMINT\KMINT_Framework\Framework\SDLFramework\Debug\SDLFramework.exe
-  SDLFramework.vcxproj -> C:\Users\MAIKEL\Source\Repos\KMINT\KMINT_Framework\Framework\SDLFramework\Debug\SDLFramework.pdb (Partial PDB)
+﻿  Edge.cpp
+c:\users\nick\source\repos\kmint\kmint_framework\framework\sdlframework\sdlframework\edge.cpp(13): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+  Generating Code...
+  Skipping... (no relevant changes detected)
+  Rabbit.cpp
+  Cow.cpp
+  Vertex.cpp
+  Main.cpp
+  Graph.cpp
+  SDLFramework.vcxproj -> C:\Users\Nick\Source\Repos\KMINT\KMINT_Framework\Framework\SDLFramework\Debug\SDLFramework.exe
+  SDLFramework.vcxproj -> C:\Users\Nick\Source\Repos\KMINT\KMINT_Framework\Framework\SDLFramework\Debug\SDLFramework.pdb (Partial PDB)

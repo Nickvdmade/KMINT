@@ -3,6 +3,7 @@
 #include "Edge.h"
 #include "Vertex.h"
 #include "FWApplication.h"
+#include "RandomGenerator.h"
 
 class Graph
 {
@@ -10,9 +11,10 @@ public:
 	Graph();
 	~Graph();
 
-	void addVertex(Vertex*);
-	void addEdge(Edge*);
+	void AddVertex(Vertex*);
+	void AddEdge(Edge*);
 	void DrawGraph(FWApplication*);
+	Vertex* GetVertex();
 
 private:
 	std::vector<Vertex*> vertices;

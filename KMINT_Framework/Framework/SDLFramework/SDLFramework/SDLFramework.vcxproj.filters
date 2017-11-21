@@ -35,6 +35,9 @@
     <ClCompile Include="Rabbit.cpp">
       <Filter>Week1</Filter>
     </ClCompile>
+    <ClCompile Include="RandomGenerator.cpp">
+      <Filter>Week1</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="SDL2.dll" />
@@ -62,6 +65,9 @@
       <Filter>Week1</Filter>
     </ClInclude>
     <ClInclude Include="Rabbit.h">
+      <Filter>Week1</Filter>
+    </ClInclude>
+    <ClInclude Include="RandomGenerator.h">
       <Filter>Week1</Filter>
     </ClInclude>
   </ItemGroup>

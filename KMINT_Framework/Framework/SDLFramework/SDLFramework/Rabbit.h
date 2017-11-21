@@ -1,14 +1,19 @@
 #pragma once
 #include "FWApplication.h"
+#include "Vertex.h"
 class Rabbit
 {
 public:
-	Rabbit(FWApplication*);
+	Rabbit(FWApplication*, Vertex*);
 	~Rabbit();
 
-	void Draw(int xPosition, int yPosition);
+	void Draw();
+	void Move(Vertex*);
+	int GetPositionID();
+	Vertex* GetPosition();
 
 private:
+	Vertex* position_;
 	FWApplication* application_;
 	SDL_Texture* texture_;
 };

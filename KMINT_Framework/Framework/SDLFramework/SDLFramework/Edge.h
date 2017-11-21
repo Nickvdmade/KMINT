@@ -4,20 +4,21 @@
 class Edge
 {
 public:
-	Edge(const Vertex*, const Vertex*, const int);
+	Edge(Vertex*, Vertex*, const int);
 	~Edge();
 
 	int GetStartX() const;
 	int GetStartY() const;
 	int GetEndX() const;
 	int GetEndY() const;
-	int GetWeight() const;
+	int GetDistance() const;
 	int From() const;
 	int To() const;
+	Vertex* Move(Vertex*);
 
 private:
-	const Vertex* start_;
-	const Vertex* end_;
-	int weight_;
+	Vertex* start_;
+	Vertex* end_;
+	int distance_;
 };
 

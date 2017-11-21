@@ -12,13 +12,13 @@ Graph::~Graph()
 {
 }
 
-void Graph::addVertex(Vertex* vertex)
+void Graph::AddVertex(Vertex* vertex)
 {
 	vertex->SetIndex(vIndex_++);
 	vertices.push_back(vertex);
 }
 
-void Graph::addEdge(Edge* edge)
+void Graph::AddEdge(Edge* edge)
 {
 	edges.push_back(edge);
 }
@@ -46,3 +46,9 @@ void Graph::DrawGraph(FWApplication* application)
 	}
 }
 
+Vertex * Graph::GetVertex()
+{
+	RandomGenerator random;
+	int number = random.GetRandomNumber(0, vertices.size() - 1);
+	return vertices[number];
+}
