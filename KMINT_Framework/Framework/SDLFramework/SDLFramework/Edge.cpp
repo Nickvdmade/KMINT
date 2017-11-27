@@ -9,7 +9,8 @@ Edge::Edge(Vertex* start, Vertex* end, const int weight)
 		start_ = start;
 		end_ = end;
 	}
-	distance_ = sqrt(pow(end_->GetX() - start_->GetX(), 2) + pow(end_->GetY() - start_->GetY(), 2)) * weight;
+	weight_ = weight;
+	distance_ = sqrt(pow(end_->GetX() - start_->GetX(), 2) + pow(end_->GetY() - start_->GetY(), 2)) * weight_;
 	start->addEdge(this);
 	end->addEdge(this);
 }
@@ -42,6 +43,11 @@ int Edge::GetEndY() const
 int Edge::GetDistance() const
 {
 	return distance_;
+}
+
+int Edge::GetWeight() const
+{
+	return weight_;
 }
 
 int Edge::From() const

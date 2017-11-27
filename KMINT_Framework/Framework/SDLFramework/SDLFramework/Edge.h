@@ -12,6 +12,7 @@ public:
 	int GetEndX() const;
 	int GetEndY() const;
 	int GetDistance() const;
+	int GetWeight() const;
 	int From() const;
 	int To() const;
 	Vertex* Move(Vertex*);
@@ -20,5 +21,6 @@ private:
 	Vertex* start_;
 	Vertex* end_;
 	int distance_;
+	int weight_;
 };
 
