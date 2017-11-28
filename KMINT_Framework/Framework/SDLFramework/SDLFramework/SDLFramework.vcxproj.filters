@@ -39,7 +39,7 @@
       <Filter>Week1</Filter>
     </ClCompile>
     <ClCompile Include="Astar.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Week1</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -74,7 +74,7 @@
       <Filter>Week1</Filter>
     </ClInclude>
     <ClInclude Include="Astar.h">
-      <Filter>Header Files</Filter>
+      <Filter>Week1</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -50,14 +50,11 @@ int Edge::GetWeight() const
 	return weight_;
 }
 
-int Edge::From() const
+Vertex* Edge::GetOther(const Vertex* vertex) const
 {
-	return start_->GetIndex();
-}
-
-int Edge::To() const
-{
-	return end_->GetIndex();
+	if (vertex == start_)
+		return end_;
+	return start_;
 }
 
 Vertex* Edge::Move(Vertex* vertex)

@@ -13,8 +13,7 @@ public:
 	int GetEndY() const;
 	int GetDistance() const;
 	int GetWeight() const;
-	int From() const;
-	int To() const;
+	Vertex* GetOther(const Vertex* vertex) const;
 	Vertex* Move(Vertex*);
 
 private:

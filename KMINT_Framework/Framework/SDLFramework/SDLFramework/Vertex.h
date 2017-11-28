@@ -16,6 +16,7 @@ public:
 	int GetY() const;
 	void SetIndex(const int index);
 	int GetIndex() const;
+	std::vector<Edge*> GetEdges();
 	Vertex* Move();
 
 private:
