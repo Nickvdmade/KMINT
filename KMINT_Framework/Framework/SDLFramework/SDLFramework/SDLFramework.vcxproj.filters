@@ -38,6 +38,9 @@
     <ClCompile Include="RandomGenerator.cpp">
       <Filter>Week1</Filter>
     </ClCompile>
+    <ClCompile Include="Astar.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="SDL2.dll" />
@@ -69,6 +72,9 @@
     </ClInclude>
     <ClInclude Include="RandomGenerator.h">
       <Filter>Week1</Filter>
+    </ClInclude>
+    <ClInclude Include="Astar.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
