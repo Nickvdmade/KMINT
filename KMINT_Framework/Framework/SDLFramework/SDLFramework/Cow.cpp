@@ -30,6 +30,11 @@ int Cow::GetPositionID()
 	return position_->GetIndex();
 }
 
+Vertex * Cow::GetPosition()
+{
+	return position_;
+}
+
 void Cow::MoveToRabbit(Vertex * vertex)
 {
 	position_ = vertex;

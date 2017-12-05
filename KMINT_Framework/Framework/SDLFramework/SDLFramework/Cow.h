@@ -10,6 +10,7 @@ public:
 	void Draw();
 	void Mooove();
 	int GetPositionID();
+	Vertex* GetPosition();
 	void MoveToRabbit(Vertex* vertex);
 
 private:

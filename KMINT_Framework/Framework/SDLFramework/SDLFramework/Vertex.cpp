@@ -36,6 +36,11 @@ int Vertex::GetIndex() const
 	return index_;
 }
 
+std::vector<Edge*> Vertex::GetEdges()
+{
+	return edges;
+}
+
 Vertex * Vertex::Move()
 {
 	RandomGenerator random;

@@ -7,6 +7,7 @@
 #include "Graph.h"
 #include "Cow.h"
 #include "Rabbit.h"
+#include "Astar.h"
 #include <Windows.h>
 
 Graph FillGraph() 
@@ -496,6 +497,8 @@ int main(int args[])
 	auto cow = new Cow(application, graph.GetVertex());
 	Sleep(1000);
 	auto rabbit = new Rabbit(application, graph.GetVertex());
+
+	Astar astar;
 	
 	//while (true){}
 	while (application->IsRunning())
@@ -513,7 +516,7 @@ int main(int args[])
 			case SDL_KEYDOWN:
 				switch (event.key.keysym.sym){
 				case SDLK_SPACE: // move cow
-					
+					astar.Search(cow->GetPosition(), rabbit->GetPosition());
 					cow->Mooove();
 					break;
 				case SDLK_0:

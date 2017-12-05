@@ -1,5 +1,5 @@
 ﻿  Astar.cpp
-c:\users\gebruiker\source\repos\kmint\kmint_framework\framework\sdlframework\sdlframework\astar.cpp(17): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
-c:\users\gebruiker\source\repos\kmint\kmint_framework\framework\sdlframework\sdlframework\astar.cpp(55): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
-Astar.obj : error LNK2019: unresolved external symbol "public: class std::vector<class Edge *,class std::allocator<class Edge *> > __thiscall Vertex::GetEdges(void)" (?GetEdges@Vertex@@QAE?AV?$vector@PAVEdge@@V?$allocator@PAVEdge@@@std@@@std@@XZ) referenced in function "private: void __thiscall Astar::CheckEdges(class Vertex *,class Vertex *)" (?CheckEdges@Astar@@AAEXPAVVertex@@0@Z)
-C:\Users\Gebruiker\Source\Repos\KMINT\KMINT_Framework\Framework\SDLFramework\Debug\SDLFramework.exe : fatal error LNK1120: 1 unresolved externals
+c:\users\nick\source\repos\kmint\kmint_framework\framework\sdlframework\sdlframework\astar.cpp(17): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+c:\users\nick\source\repos\kmint\kmint_framework\framework\sdlframework\sdlframework\astar.cpp(64): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+  SDLFramework.vcxproj -> C:\Users\Nick\Source\Repos\KMINT\KMINT_Framework\Framework\SDLFramework\Debug\SDLFramework.exe
+  SDLFramework.vcxproj -> C:\Users\Nick\Source\Repos\KMINT\KMINT_Framework\Framework\SDLFramework\Debug\SDLFramework.pdb (Partial PDB)

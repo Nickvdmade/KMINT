@@ -17,13 +17,25 @@ std::vector<Edge*> Astar::Search(Vertex* start, Vertex* end)
 	estimateCosts_[start] = sqrt(pow(start->GetX() + end->GetX(), 2) + pow(start->GetY() + end->GetY(), 2));
 	while(!openSet_.empty())
 	{
-		Vertex* vertex = openSet_.front();
-		openSet_.pop_front();
+		auto itvector = openSet_.begin();
+		Vertex* vertex = *itvector;
+		int cost = realCosts_[vertex];
+		for (auto it = itvector + 1; it != openSet_.end(); it++)
+		{
+			if (realCosts_[*it] < cost)
+			{
+				itvector = it;
+				vertex = *itvector;
+				cost = realCosts_[vertex];
+			}
+		}
+		openSet_.erase(itvector);
 		CheckEdges(vertex, end);
-
+		closedSet_.push_back(vertex);
+		if (vertex == end)
+			break;
 	}
-	std::vector<Edge*> stuff;
-	return stuff;
+	return CalculateShortestPath(start, end);
 }
 
 void Astar::CheckEdges(Vertex* vertex, Vertex* end)
@@ -33,27 +45,30 @@ void Astar::CheckEdges(Vertex* vertex, Vertex* end)
 	{
 		Vertex* otherVertex = edge->GetOther(vertex);
 		int cost = realCosts_[vertex] + edge->GetDistance();
-		std::vector<Vertex*>::iterator it = find(closedSet_.begin(), closedSet_.end(), otherVertex);
-		if (it != closedSet_.end())
+		if (find(closedSet_.begin(), closedSet_.end(), otherVertex) == closedSet_.end())
 		{
-			if (realCosts_[otherVertex] > cost)
+			if (find(openSet_.begin(), openSet_.end(), otherVertex) != openSet_.end())
+			{
+				if (realCosts_[otherVertex] > cost)
+				{
+					realCosts_[otherVertex] = cost;
+					shortReverse_[otherVertex] = edge;
+				}
+			}
+			else
 			{
 				realCosts_[otherVertex] = cost;
-				closedSet_.erase(it);
+				shortReverse_[otherVertex] = edge;
+				estimateCosts_[otherVertex] = sqrt(pow(otherVertex->GetX() + end->GetX(), 2) + pow(otherVertex->GetY() + end->GetY(), 2));
 				openSet_.push_back(otherVertex);
-				return;
 			}
 		}
-		if (find(openSet_.begin(), openSet_.end(), otherVertex) != openSet_.end())
-		{
-			if (realCosts_[otherVertex] > cost)
-				realCosts_[otherVertex] = cost;
-		}
-		else
-		{
-			realCosts_[otherVertex] = cost;
-			estimateCosts_[otherVertex] = sqrt(pow(otherVertex->GetX() + end->GetX(), 2) + pow(otherVertex->GetY() + end->GetY(), 2));
-			openSet_.push_back(otherVertex);
-		}
 	}
+}
+
+std::vector<Edge*> Astar::CalculateShortestPath(Vertex* start, Vertex* end)
+{
+	std::vector<Edge*> shortPath;
+
+	return shortPath;
 }
