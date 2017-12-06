@@ -515,8 +515,10 @@ int main(int args[])
 				break;
 			case SDL_KEYDOWN:
 				switch (event.key.keysym.sym){
+				case SDLK_f:
+					cow->FindRabbit(rabbit->GetPosition());
+					break;
 				case SDLK_SPACE: // move cow
-					astar.Search(cow->GetPosition(), rabbit->GetPosition());
 					cow->Mooove();
 					break;
 				case SDLK_0:

@@ -20,7 +20,7 @@ public:
 	Vertex* Move();
 
 private:
-	std::vector<Edge*> edges;
+	std::vector<Edge*> edges_;
 	int index_;
 	int xPosition_;
 	int yPosition_;

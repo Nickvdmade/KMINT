@@ -1,14 +1,11 @@
 #include "Cow.h"
 
-
-
 Cow::Cow(FWApplication* application, Vertex* vertex)
 {
 	application_ = application;
 	texture_ = application_->LoadTexture("cow-2.png");
 	position_ = vertex;
 }
-
 
 Cow::~Cow()
 {
@@ -22,7 +19,13 @@ void Cow::Draw()
 
 void Cow::Mooove()
 {
-	position_ = position_->Move();
+	//position_ = position_->Move();
+	if (!route_.empty())
+	{
+		Edge* direction = route_.top();
+		route_.pop();
+		position_ = direction->GetOther(position_);
+	}
 }
 
 int Cow::GetPositionID()
@@ -35,7 +38,13 @@ Vertex * Cow::GetPosition()
 	return position_;
 }
 
-void Cow::MoveToRabbit(Vertex * vertex)
+void Cow::MoveToRabbit(Vertex* vertex)
 {
 	position_ = vertex;
+}
+
+void Cow::FindRabbit(Vertex* position)
+{
+	Astar astar;
+	route_ = astar.Search(position_, position);
 }

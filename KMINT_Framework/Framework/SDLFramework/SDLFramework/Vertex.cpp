@@ -13,7 +13,7 @@ Vertex::~Vertex()
 
 void Vertex::addEdge(Edge * edge)
 {
-	edges.push_back(edge);
+	edges_.push_back(edge);
 }
 
 int Vertex::GetX() const
@@ -38,12 +38,12 @@ int Vertex::GetIndex() const
 
 std::vector<Edge*> Vertex::GetEdges()
 {
-	return edges;
+	return edges_;
 }
 
 Vertex * Vertex::Move()
 {
 	RandomGenerator random;
-	int number = random.GetRandomNumber(0, edges.size() - 1);
-	return edges[number]->Move(this);
+	int number = random.GetRandomNumber(0, edges_.size() - 1);
+	return edges_[number]->Move(this);
 }
