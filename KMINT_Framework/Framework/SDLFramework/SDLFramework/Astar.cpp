@@ -10,7 +10,7 @@ Astar::~Astar()
 
 }
 
-std::vector<Edge*> Astar::Search(Vertex* start, Vertex* end)
+std::stack<Edge*> Astar::Search(Vertex* start, Vertex* end)
 {
 	openSet_.push_back(start);
 	realCosts_[start] = 0;
@@ -66,9 +66,15 @@ void Astar::CheckEdges(Vertex* vertex, Vertex* end)
 	}
 }
 
-std::vector<Edge*> Astar::CalculateShortestPath(Vertex* start, Vertex* end)
+std::stack<Edge*> Astar::CalculateShortestPath(Vertex* start, Vertex* end)
 {
-	std::vector<Edge*> shortPath;
-
+	std::stack<Edge*> shortPath;
+	Vertex* findVertex = end;
+	while (findVertex != start)
+	{
+		Edge* edge = shortReverse_[findVertex];
+		shortPath.push(edge);
+		findVertex = edge->GetOther(findVertex);
+	}
 	return shortPath;
 }

@@ -2,14 +2,14 @@
 #include <map>
 #include "Vertex.h"
 #include "Edge.h"
-#include <deque>
+#include <stack>
 
 class Astar
 {
 public:
 	Astar();
 	~Astar();
-	std::vector<Edge*> Search(Vertex* start, Vertex* end);
+	std::stack<Edge*> Search(Vertex* start, Vertex* end);
 
 private:
 	std::map<Vertex*, int> realCosts_;
@@ -19,5 +19,5 @@ private:
 	std::vector<Vertex*> closedSet_;
 
 	void CheckEdges(Vertex* vertex, Vertex* end);
-	std::vector<Edge*> CalculateShortestPath(Vertex* start, Vertex* end);
+	std::stack<Edge*> CalculateShortestPath(Vertex* start, Vertex* end);
 };
