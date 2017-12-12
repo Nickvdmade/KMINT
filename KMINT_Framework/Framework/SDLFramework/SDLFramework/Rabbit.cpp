@@ -1,36 +1,31 @@
 #include "Rabbit.h"
 
-
-
-Rabbit::Rabbit(FWApplication* application, Vertex* vertex)
+Rabbit::Rabbit(const float dogAttraction, const float waterAttraction, const float cohesion, const float separation, const float alignment)
+	: position_(nullptr)
+	, dogAttraction_(dogAttraction)
+	, waterAttraction_(waterAttraction)
+	, cohesion_(cohesion)
+	, separation_(separation)
+	, alignment_(alignment)
 {
-	application_ = application;
-	texture_ = application_->LoadTexture("rabbit-3.png");
-	position_ = vertex;
+	width_ = 5;
+	heigth_ = 5;
 }
-
 
 Rabbit::~Rabbit()
 {
-	application_->RemoveTexture(texture_);
+
 }
 
-void Rabbit::Draw()
+void Rabbit::setPosition(Vertex* position)
 {
-	application_->DrawTexture(texture_, position_->GetX(), position_->GetY(), 30, 30);
+	position_ = position;
 }
 
-void Rabbit::Move(Vertex* vertex)
+void Rabbit::show(FWApplication* application) const
 {
-	position_ = vertex;
-}
-
-int Rabbit::GetPositionID()
-{
-	return position_->GetIndex();
-}
-
-Vertex * Rabbit::GetPosition()
-{
-	return position_;
+	int xPos = position_->GetX() + 7;
+	int yPos = position_->GetY() + 7;
+	application->SetColor(Color(255, 255, 255, 255));
+	application->DrawRect(xPos, yPos, width_, heigth_, true);
 }

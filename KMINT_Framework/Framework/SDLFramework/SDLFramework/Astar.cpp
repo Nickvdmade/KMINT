@@ -40,7 +40,7 @@ std::stack<Edge*> Astar::Search(Vertex* start, Vertex* end)
 
 void Astar::CheckEdges(Vertex* vertex, Vertex* end)
 {
-	std::vector<Edge*> edges = vertex->GetEdges();
+	/*std::vector<Edge*> edges = vertex->GetEdges();
 	for each(Edge* edge in edges)
 	{
 		Vertex* otherVertex = edge->GetOther(vertex);
@@ -63,7 +63,7 @@ void Astar::CheckEdges(Vertex* vertex, Vertex* end)
 				openSet_.push_back(otherVertex);
 			}
 		}
-	}
+	}*/
 }
 
 std::stack<Edge*> Astar::CalculateShortestPath(Vertex* start, Vertex* end)

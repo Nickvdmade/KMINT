@@ -12,6 +12,15 @@
     <Filter Include="Week1">
       <UniqueIdentifier>{6469432c-2a1e-411f-a745-f6b8fe556dad}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Eindopdracht">
+      <UniqueIdentifier>{7f81d50d-0d3e-40d1-bb4e-75b997f96870}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Eindopdracht\Header Files">
+      <UniqueIdentifier>{d9cdeb7b-c3e4-4cc7-bbec-d1454ae445ac}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Eindopdracht\Source Files">
+      <UniqueIdentifier>{5e5651ee-9ae0-49bb-afdf-c6dc6f9521c7}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -20,26 +29,44 @@
     <ClCompile Include="FWApplication.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Edge.cpp">
-      <Filter>Week1</Filter>
-    </ClCompile>
-    <ClCompile Include="Graph.cpp">
-      <Filter>Week1</Filter>
-    </ClCompile>
-    <ClCompile Include="Vertex.cpp">
-      <Filter>Week1</Filter>
-    </ClCompile>
     <ClCompile Include="Cow.cpp">
       <Filter>Week1</Filter>
     </ClCompile>
-    <ClCompile Include="Rabbit.cpp">
-      <Filter>Week1</Filter>
+    <ClCompile Include="FileReader.cpp">
+      <Filter>Eindopdracht\Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="RandomGenerator.cpp">
-      <Filter>Week1</Filter>
+    <ClCompile Include="Map.cpp">
+      <Filter>Eindopdracht\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Vertex.cpp">
+      <Filter>Eindopdracht\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Edge.cpp">
+      <Filter>Eindopdracht\Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Astar.cpp">
-      <Filter>Week1</Filter>
+      <Filter>Eindopdracht\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="RandomGenerator.cpp">
+      <Filter>Eindopdracht\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Graph.cpp">
+      <Filter>Eindopdracht\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Rottweiler.cpp">
+      <Filter>Eindopdracht\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Person.cpp">
+      <Filter>Eindopdracht\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Misses.cpp">
+      <Filter>Eindopdracht\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Mister.cpp">
+      <Filter>Eindopdracht\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Rabbit.cpp">
+      <Filter>Eindopdracht\Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -55,26 +82,44 @@
     <ClInclude Include="IGameObject.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Edge.h">
-      <Filter>Week1</Filter>
-    </ClInclude>
-    <ClInclude Include="Graph.h">
-      <Filter>Week1</Filter>
-    </ClInclude>
-    <ClInclude Include="Vertex.h">
-      <Filter>Week1</Filter>
-    </ClInclude>
     <ClInclude Include="Cow.h">
       <Filter>Week1</Filter>
     </ClInclude>
-    <ClInclude Include="Rabbit.h">
-      <Filter>Week1</Filter>
+    <ClInclude Include="FileReader.h">
+      <Filter>Eindopdracht\Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="RandomGenerator.h">
-      <Filter>Week1</Filter>
+    <ClInclude Include="Map.h">
+      <Filter>Eindopdracht\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Vertex.h">
+      <Filter>Eindopdracht\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Edge.h">
+      <Filter>Eindopdracht\Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Astar.h">
-      <Filter>Week1</Filter>
+      <Filter>Eindopdracht\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="RandomGenerator.h">
+      <Filter>Eindopdracht\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Graph.h">
+      <Filter>Eindopdracht\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Rottweiler.h">
+      <Filter>Eindopdracht\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Person.h">
+      <Filter>Eindopdracht\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Mister.h">
+      <Filter>Eindopdracht\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Misses.h">
+      <Filter>Eindopdracht\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Rabbit.h">
+      <Filter>Eindopdracht\Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -84,5 +129,8 @@
     <Image Include="..\Resources\rabbit-3.png">
       <Filter>Week1</Filter>
     </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="graaf.txt" />
   </ItemGroup>
 </Project>

@@ -1,10 +1,21 @@
 #include "Vertex.h"
 #include "Edge.h"
+#include "Rottweiler.h"
+#include "Person.h"
 
-Vertex::Vertex(const int xPosition, const int yPosition)
+Vertex::Vertex(const int xPosition, const int yPosition, const int index, const char type, Rottweiler* dog, std::vector<Person*> persons)
+	: xPosition_(xPosition)
+	, yPosition_(yPosition)
+	, index_(index)
+	, type_(type)
 {
-	xPosition_ = xPosition;
-	yPosition_ = yPosition;
+	for (Person* person : persons)
+	{
+		if (type_ == person->getName())
+			person->setPosition(this);
+	}
+	if (type_ == 'O')
+		dog->setPosition(this);
 }
 
 Vertex::~Vertex()
@@ -26,17 +37,17 @@ int Vertex::GetY() const
 	return yPosition_;
 }
 
-void Vertex::SetIndex(const int index)
-{
-	index_ = index;
-}
-
 int Vertex::GetIndex() const
 {
 	return index_;
 }
 
-std::vector<Edge*> Vertex::GetEdges()
+char Vertex::getType() const
+{
+	return type_;
+}
+
+std::vector<Edge*> Vertex::GetEdges() const
 {
 	return edges_;
 }
@@ -46,4 +57,31 @@ Vertex * Vertex::Move()
 	RandomGenerator random;
 	int number = random.GetRandomNumber(0, edges_.size() - 1);
 	return edges_[number]->Move(this);
+}
+
+void Vertex::show(FWApplication* application) const
+{
+	switch (type_)
+	{
+		case '~':
+			application->SetColor(Color(0, 0, 255, 255));
+			break;
+		case 'M':
+		case 'V':
+		case 'X':
+			application->SetColor(Color(0, 255, 0, 255));
+			break;
+		case 'O':
+			application->SetColor(Color(128, 128, 128, 255));
+			break;
+		default:
+			break;
+	}
+	application->DrawRect(xPosition_, yPosition_, 20, 20, true);
+	application->SetColor(Color(0, 0, 0, 255));
+	for (Edge* edge : edges_)
+	{
+		Vertex* vertex = edge->GetOther(this);
+		application->DrawLine(xPosition_ + 10, yPosition_ + 10, vertex->GetX() + 10, vertex->GetY() + 10);
+	}
 }

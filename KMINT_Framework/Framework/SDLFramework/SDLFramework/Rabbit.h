@@ -1,19 +1,21 @@
 #pragma once
-#include "FWApplication.h"
 #include "Vertex.h"
+
 class Rabbit
 {
 public:
-	Rabbit(FWApplication*, Vertex*);
+	Rabbit(const float dogAttraction, const float waterAttraction, const float cohesion, const float separation, const float alignment);
 	~Rabbit();
-
-	void Draw();
-	void Move(Vertex*);
-	int GetPositionID();
-	Vertex* GetPosition();
+	void setPosition(Vertex* position);
+	void show(FWApplication* application) const;
 
 private:
 	Vertex* position_;
-	FWApplication* application_;
-	SDL_Texture* texture_;
+	int width_;
+	int heigth_;
+	float dogAttraction_;
+	float waterAttraction_;
+	float cohesion_;
+	float separation_;
+	float alignment_;
 };
