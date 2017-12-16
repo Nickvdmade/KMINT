@@ -5,6 +5,7 @@ Rottweiler::Rottweiler()
 {
 	width_ = 10;
 	height_ = 10;
+	currentState_ = init;
 }
 
 Rottweiler::~Rottweiler()
@@ -22,4 +23,44 @@ void Rottweiler::show(FWApplication* application) const
 	int yPos = position_->GetY() + 5;
 	application->SetColor(Color(139, 69, 19, 255));
 	application->DrawRect(xPos, yPos, width_, height_, true);
+}
+
+void Rottweiler::updateState()
+{
+	switch (currentState_)
+	{
+	case init:
+		initialize();
+		break;
+	case wander:
+
+		break;
+	case hunt:
+		
+		break;
+	case eat:
+
+		break;
+	case checkThirst:
+
+		break;
+	case thirsty:
+		
+		break;
+	case findPerson:
+
+		break;
+	case drink:
+
+		break;
+	case sleep:
+
+		break;
+	}
+}
+
+void Rottweiler::initialize()
+{
+	previousState_ = currentState_;
+	currentState_ = wander;
 }

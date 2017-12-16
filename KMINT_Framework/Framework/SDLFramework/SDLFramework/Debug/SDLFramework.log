@@ -1,7 +1,23 @@
-﻿  Rabbit.cpp
-  Map.cpp
-c:\users\gebruiker\source\repos\kmint\kmint_framework\framework\sdlframework\sdlframework\map.cpp(20): warning C4018: '<': signed/unsigned mismatch
-c:\users\gebruiker\source\repos\kmint\kmint_framework\framework\sdlframework\sdlframework\map.cpp(23): warning C4018: '<': signed/unsigned mismatch
+﻿  Vertex.cpp
+  Rottweiler.cpp
+  FileReader.cpp
+  RandomGenerator.cpp
+c:\users\nick\source\repos\kmint\kmint_framework\framework\sdlframework\sdlframework\randomgenerator.cpp(6): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
   Main.cpp
+  Rabbit.cpp
+  Person.cpp
+  Mister.cpp
+  Misses.cpp
+  Map.cpp
+c:\users\nick\source\repos\kmint\kmint_framework\framework\sdlframework\sdlframework\map.cpp(20): warning C4018: '<': signed/unsigned mismatch
+c:\users\nick\source\repos\kmint\kmint_framework\framework\sdlframework\sdlframework\map.cpp(23): warning C4018: '<': signed/unsigned mismatch
+  Graph.cpp
+  FWApplication.cpp
+c:\users\nick\source\repos\kmint\kmint_framework\framework\sdlframework\sdlframework\fwapplication.cpp(333): warning C4838: conversion from 'uint32_t' to 'Uint8' requires a narrowing conversion
+  Edge.cpp
+  Cow.cpp
+  Astar.cpp
+c:\users\nick\source\repos\kmint\kmint_framework\framework\sdlframework\sdlframework\astar.cpp(17): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
   Generating Code...
-  SDLFramework.vcxproj -> C:\Users\Gebruiker\Source\Repos\KMINT\KMINT_Framework\Framework\SDLFramework\Debug\SDLFramework.exe
+  SDLFramework.vcxproj -> C:\Users\Nick\Source\Repos\KMINT\KMINT_Framework\Framework\SDLFramework\Debug\SDLFramework.exe
+  SDLFramework.vcxproj -> C:\Users\Nick\Source\Repos\KMINT\KMINT_Framework\Framework\SDLFramework\Debug\SDLFramework.pdb (Partial PDB)

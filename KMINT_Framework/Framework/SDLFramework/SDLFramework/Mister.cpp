@@ -6,8 +6,34 @@ Mister::Mister(const char name, const Color colour, const int minWater, const in
 	colour_ = colour;
 	minWater_ = minWater;
 	maxWater_ = maxWater;
+	currentState_ = init;
 }
 
 Mister::~Mister()
 {
+}
+
+void Mister::updateState()
+{
+	switch (currentState_)
+	{
+	case init:
+
+		break;
+	case wander:
+
+		break;
+	case picture:
+
+		break;
+	case giveWater:
+
+		break;
+	}
+}
+
+void Mister::initialize()
+{
+	previousState_ = currentState_;
+	currentState_ = wander;
 }
