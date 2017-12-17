@@ -1,21 +1,13 @@
 #include "Vertex.h"
 #include "Edge.h"
-#include "Rottweiler.h"
-#include "Person.h"
 
-Vertex::Vertex(const int xPosition, const int yPosition, const int index, const char type, Rottweiler* dog, std::vector<Person*> persons)
+Vertex::Vertex(const int xPosition, const int yPosition, const int index, const char type)
 	: xPosition_(xPosition)
 	, yPosition_(yPosition)
 	, index_(index)
 	, type_(type)
 {
-	for (Person* person : persons)
-	{
-		if (type_ == person->getName())
-			person->setPosition(this);
-	}
-	if (type_ == 'O')
-		dog->setPosition(this);
+	
 }
 
 Vertex::~Vertex()

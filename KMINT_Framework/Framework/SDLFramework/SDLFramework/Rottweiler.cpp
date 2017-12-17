@@ -1,7 +1,8 @@
 #include "Rottweiler.h"
 
-Rottweiler::Rottweiler()
-	: position_(nullptr)
+Rottweiler::Rottweiler(Vertex* start)
+	: cave_(start)
+	, position_(start)
 {
 	width_ = 10;
 	height_ = 10;
@@ -44,17 +45,16 @@ void Rottweiler::updateState()
 	case checkThirst:
 
 		break;
-	case thirsty:
-		
-		break;
 	case findPerson:
 
 		break;
 	case drink:
 
 		break;
-	case sleep:
+	case goToSleep:
 
+		break;
+	default:
 		break;
 	}
 }

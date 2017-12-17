@@ -4,21 +4,13 @@
 class Misses : public Person
 {
 public:
-	Misses(const char name, const Color colour, const int minWater, const int maxWater);
+	Misses(const char name, const Color colour, const int minWater, const int maxWater, Vertex* start);
 	~Misses();
 	void updateState();
 
 private:
 	void initialize();
 
-	MissesStates currentState_;
-	MissesStates previousState_;
-};
-
-enum MissesStates
-{
-	init,
-	wander,
-	scared,
-	giveWater
+	States currentState_;
+	States previousState_;
 };

@@ -11,7 +11,7 @@ class Edge;
 class Vertex
 {
 public:
-	Vertex(const int xPosition, const int yPosition, const int index, const char type, Rottweiler* dog, std::vector<Person*> persons);
+	Vertex(const int xPosition, const int yPosition, const int index, const char type);
 	~Vertex();
 	void addEdge(Edge* edge);
 
