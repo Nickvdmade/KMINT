@@ -121,6 +121,9 @@
     <ClInclude Include="Rabbit.h">
       <Filter>Eindopdracht\Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="StatesEnum.h">
+      <Filter>Eindopdracht\Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Image Include="..\Resources\cow-2.png">

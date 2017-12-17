@@ -1,6 +1,7 @@
 #pragma once
 #include "FWApplication.h"
 #include "Vertex.h"
+#include "StatesEnum.h"
 
 class Person
 {
@@ -13,6 +14,7 @@ public:
 
 protected:
 	Vertex* position_;
+	Vertex* startPosition_;
 	int minWater_;
 	int maxWater_;
 	int width_;
@@ -20,3 +22,4 @@ protected:
 	char name_;
 	Color colour_;
 };
+

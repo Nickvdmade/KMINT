@@ -28,15 +28,20 @@ int main(int args[])
 	application->SetTargetFPS(60);
 	application->SetColor(Color(255, 10, 40, 255));
 	
+	//create map
 	FileReader reader;
 	Map map(reader.readFile("graaf.txt"));
-	Rottweiler Schaap;
+	map.createMap();
+	
+	//create players
+	Rottweiler* Schaap = new Rottweiler(map.getCave());
 	std::vector<Person*> persons;
-	Person* meneerJanssen = new Mister('M', Color(255, 0, 0, 255), 30, 50);
+	Person* meneerJanssen = new Mister('M', Color(255, 0, 0, 255), 30, 50, map.getStartMister());
 	persons.push_back(meneerJanssen);
-	Person* mevrouwJanssen = new Misses('V', Color(255, 0, 128, 255), 10, 80);
+	Person* mevrouwJanssen = new Misses('V', Color(255, 0, 128, 255), 10, 80, map.getStartMisses());
 	persons.push_back(mevrouwJanssen);
-	map.createMap(&Schaap, persons);
+	
+	//create rabbits
 	std::vector<Rabbit*> rabbits;
 	Rabbit* rabbit = new Rabbit(0, 0, 0, 0, 0);
 	rabbits.push_back(rabbit);
@@ -75,7 +80,7 @@ int main(int args[])
 		}
 
 		map.show(application);
-		Schaap.show(application);
+		Schaap->show(application);
 		for (Person* person : persons)
 			person->show(application);
 		rabbit->show(application);
@@ -88,5 +93,11 @@ int main(int args[])
 		application->EndTick();
 	}
 		
+	delete mevrouwJanssen;
+	delete meneerJanssen;
+	delete Schaap;
+	for (Rabbit* rabbit : rabbits)
+		delete rabbit;
+
 	return EXIT_SUCCESS;
 }

@@ -1,11 +1,12 @@
 #pragma once
 #include "FWApplication.h"
 #include "Vertex.h"
+#include "StatesEnum.h"
 
 class Rottweiler
 {
 public:
-	Rottweiler();
+	Rottweiler(Vertex* start);
 	~Rottweiler();
 	void setPosition(Vertex* position);
 	void show(FWApplication* application) const;
@@ -15,20 +16,10 @@ private:
 	void initialize();
 
 	Vertex* position_;
+	Vertex* cave_;
 	int width_;
 	int height_;
-	RottweilerStates currentState_;
-	RottweilerStates previousState_;
+	States currentState_;
+	States previousState_;
 };
 
-enum RottweilerStates
-{
-	init,
-	wander,
-	hunt,
-	eat,
-	checkThirst,
-	findPerson,
-	drink,
-	goToSleep
-};

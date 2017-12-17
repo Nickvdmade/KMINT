@@ -4,6 +4,9 @@ Map::Map(const std::vector<std::string> mapText)
 	: mapText_(mapText)
 {
 	waterChar_ = '~';
+	misterStart = nullptr;
+	missesStart = nullptr;
+	cave = nullptr;
 }
 
 Map::~Map()
@@ -14,7 +17,7 @@ Map::~Map()
 		delete edge;
 }
 
-void Map::createMap(Rottweiler* dog, std::vector<Person*> persons)
+void Map::createMap()
 {
 	int index = 0;
 	for (int yPos = 0; yPos < mapText_.size(); yPos++)
@@ -22,7 +25,7 @@ void Map::createMap(Rottweiler* dog, std::vector<Person*> persons)
 		std::string line = mapText_[yPos];
 		for (int xPos = 0; xPos < line.size(); xPos++)
 		{
-			addVertex(line, xPos, yPos, index++, dog, persons);
+			addVertex(line, xPos, yPos, index++);
 		}
 	}
 }
@@ -39,10 +42,32 @@ void Map::show(FWApplication* application)
 		vertex->show(application);
 }
 
-void Map::addVertex(const std::string line, const int xPos, const int yPos, const int index, Rottweiler* dog, std::vector<Person*> persons)
+Vertex * Map::getStartMister()
 {
-	Vertex* vertex = new Vertex(xPos * 20, yPos * 20, index, line[xPos], dog, persons);
+	return misterStart;
+}
+
+Vertex * Map::getStartMisses()
+{
+	return missesStart;
+}
+
+Vertex * Map::getCave()
+{
+	return cave;
+}
+
+void Map::addVertex(const std::string line, const int xPos, const int yPos, const int index)
+{
+	char type = line[xPos];
+	Vertex* vertex = new Vertex(xPos * 20, yPos * 20, index, type);
 	vertices_.push_back(vertex);
+	connectNeighbours(vertex, line, xPos, yPos);
+	setStartPositions(type, vertex);
+}
+
+void Map::connectNeighbours(Vertex * vertex, const std::string line, const int xPos, const int yPos)
+{
 	if (line[xPos] != waterChar_)
 	{
 		if (xPos != 0)
@@ -62,4 +87,14 @@ void Map::addVertex(const std::string line, const int xPos, const int yPos, cons
 			}
 		}
 	}
+}
+
+void Map::setStartPositions(char type, Vertex * vertex)
+{
+	if (type == 'M')
+		misterStart = vertex;
+	else if (type == 'V')
+		missesStart = vertex;
+	else if (type == 'O')
+		cave = vertex;
 }

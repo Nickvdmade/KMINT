@@ -1,12 +1,14 @@
 #include "Misses.h"
 
-Misses::Misses(const char name, const Color colour, const int minWater, const int maxWater) : Person()
+Misses::Misses(const char name, const Color colour, const int minWater, const int maxWater, Vertex* start) : Person()
 {
 	name_ = name;
 	colour_ = colour;
 	minWater_ = minWater;
 	maxWater_ = maxWater;
 	currentState_ = init;
+	startPosition_ = start;
+	position_ = startPosition_;
 }
 
 Misses::~Misses()
@@ -18,7 +20,7 @@ void Misses::updateState()
 	switch (currentState_)
 	{
 	case init:
-
+		initialize();
 		break;
 	case wander:
 
@@ -28,6 +30,8 @@ void Misses::updateState()
 		break;
 	case giveWater:
 
+		break;
+	default:
 		break;
 	}
 }
