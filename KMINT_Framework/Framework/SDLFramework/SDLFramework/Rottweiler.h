@@ -28,8 +28,7 @@ enum RottweilerStates
 	hunt,
 	eat,
 	checkThirst,
-	thirsty,
 	findPerson,
 	drink,
-	sleep
+	goToSleep
 };
