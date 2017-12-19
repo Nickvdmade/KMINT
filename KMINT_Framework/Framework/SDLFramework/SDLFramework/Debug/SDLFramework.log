@@ -1,9 +1,10 @@
-﻿  Vertex.cpp
+﻿  Rottweiler.cpp
+  Mister.cpp
+  Misses.cpp
   Main.cpp
   Generating Code...
-  Compiling...
+  Skipping... (no relevant changes detected)
+  Vertex.cpp
   Map.cpp
-c:\users\maike\source\repos\kmint\kmint_framework\framework\sdlframework\sdlframework\map.cpp(23): warning C4018: '<': signed/unsigned mismatch
-c:\users\maike\source\repos\kmint\kmint_framework\framework\sdlframework\sdlframework\map.cpp(26): warning C4018: '<': signed/unsigned mismatch
-  Generating Code...
+  Person.cpp
   SDLFramework.vcxproj -> C:\Users\maike\Source\Repos\KMINT\KMINT_Framework\Framework\SDLFramework\Debug\SDLFramework.exe

@@ -7,6 +7,7 @@ Rottweiler::Rottweiler(Vertex* start)
 	width_ = 10;
 	height_ = 10;
 	currentState_ = init;
+	stepSpeed_ = 1;
 }
 
 Rottweiler::~Rottweiler()
@@ -34,7 +35,10 @@ void Rottweiler::updateState()
 		initialize();
 		break;
 	case wander:
-
+		if (!inState_)
+			startState();
+		else
+			wandering();
 		break;
 	case hunt:
 		
@@ -63,4 +67,40 @@ void Rottweiler::initialize()
 {
 	previousState_ = currentState_;
 	currentState_ = wander;
+}
+
+void Rottweiler::startState()
+{
+	totalTime_ = std::chrono::system_clock::now();
+	stepTime_ = std::chrono::system_clock::now();
+	inState_ = true;
+}
+
+bool Rottweiler::canSeeRabbit()
+{
+	return false;
+}
+
+void Rottweiler::wandering()
+{
+	if (canSeeRabbit())
+	{
+		previousState_ = currentState_;
+		currentState_ = hunt;
+		inState_ = false;
+	}
+	else
+	{
+		stepTimer_ = std::chrono::system_clock::now() - stepTime_;
+		if (stepTimer_.count() >= stepSpeed_)
+		{
+			moveRandom();
+			stepTime_ = std::chrono::system_clock::now();
+		}
+	}
+}
+
+void Rottweiler::moveRandom()
+{
+	position_ = position_->Move();
 }

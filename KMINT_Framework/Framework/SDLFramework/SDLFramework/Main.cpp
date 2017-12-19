@@ -81,8 +81,12 @@ int main(int args[])
 
 		map.show(application);
 		Schaap->show(application);
+		Schaap->updateState();
 		for (Person* person : persons)
+		{
 			person->show(application);
+			person->updateState();
+		}
 		rabbit->show(application);
 		
 		// For the background

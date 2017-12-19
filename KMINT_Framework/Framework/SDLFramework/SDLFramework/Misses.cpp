@@ -9,6 +9,8 @@ Misses::Misses(const char name, const Color colour, const int minWater, const in
 	currentState_ = init;
 	startPosition_ = start;
 	position_ = startPosition_;
+	inState_ = false;
+	stepSpeed_ = 2;
 }
 
 Misses::~Misses()
@@ -23,10 +25,13 @@ void Misses::updateState()
 		initialize();
 		break;
 	case wander:
-
+		if (!inState_)
+			startState();
+		else
+			wandering();
 		break;
 	case scared:
-
+		standStill();
 		break;
 	case giveWater:
 
@@ -36,8 +41,36 @@ void Misses::updateState()
 	}
 }
 
-void Misses::initialize()
+void Misses::standStill()
 {
-	previousState_ = currentState_;
-	currentState_ = wander;
+	if (!canSeeRabbit())
+	{
+		currentState_ = previousState_;
+		previousState_ = scared;
+	}
 }
+
+bool Misses::canSeeRabbit()
+{
+	return false;
+}
+
+void Misses::wandering()
+{
+	if (canSeeRabbit())
+	{
+		previousState_ = currentState_;
+		currentState_ = scared;
+		inState_ = false;
+	}
+	else
+	{
+		stepTimer_ = std::chrono::system_clock::now() - stepTime_;
+		if (stepTimer_.count() >= stepSpeed_)
+		{
+			moveRandom();
+			stepTime_ = std::chrono::system_clock::now();
+		}
+	}
+}
+

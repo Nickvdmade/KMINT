@@ -6,11 +6,9 @@ class Mister : public Person
 public:
 	Mister(const char name, const Color colour, const int minWater, const int maxWater, Vertex* start);
 	~Mister();
-	void updateState();
+	void updateState() override;
 
 private:
-	void initialize();
-
-	States currentState_;
-	States previousState_;
+	void takePicture();
+	void wandering() override;
 };

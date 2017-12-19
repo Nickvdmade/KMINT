@@ -9,8 +9,7 @@ public:
 	void updateState();
 
 private:
-	void initialize();
-
-	States currentState_;
-	States previousState_;
+	void standStill();
+	bool canSeeRabbit();
+	void wandering() override;
 };

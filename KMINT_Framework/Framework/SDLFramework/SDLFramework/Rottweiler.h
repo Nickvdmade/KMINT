@@ -2,6 +2,8 @@
 #include "FWApplication.h"
 #include "Vertex.h"
 #include "StatesEnum.h"
+#include <chrono>
+#include <ctime>
 
 class Rottweiler
 {
@@ -14,6 +16,10 @@ public:
 
 private:
 	void initialize();
+	void startState();
+	bool canSeeRabbit();
+	void wandering();
+	void moveRandom();
 
 	Vertex* position_;
 	Vertex* cave_;
@@ -21,5 +27,12 @@ private:
 	int height_;
 	States currentState_;
 	States previousState_;
+
+	bool inState_;
+	double stepSpeed_;
+	std::chrono::system_clock::time_point totalTime_;
+	std::chrono::duration<double> totalTimer_;
+	std::chrono::system_clock::time_point stepTime_;
+	std::chrono::duration<double> stepTimer_;
 };
 
