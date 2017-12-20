@@ -5,7 +5,6 @@ enum States
 	wander,
 	picture,
 	scared,
-	giveWater,
 	hunt,
 	eat,
 	checkThirst,

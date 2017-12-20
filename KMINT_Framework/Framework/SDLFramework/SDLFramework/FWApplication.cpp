@@ -346,6 +346,24 @@ void FWApplication::DrawText(const std::string & message, uint32_t offsetX, uint
 	}
 }
 
+void FWApplication::DrawTextItem(const std::string & message, uint32_t offsetX, uint32_t offsetY)
+{
+	SDL_Color color = { mColor.r, mColor.g, mColor.b, mColor.a };
+	//SDL_Color bgColor = { mTextBackgroundColor.r, mTextBackgroundColor.g, mTextBackgroundColor.b, mTextBackgroundColor.a };
+
+	SDL_Surface * surface = TTF_RenderText_Blended(mFont, message.c_str(), color);
+	if (surface)
+	{
+		SDL_Texture * texture = SDL_CreateTextureFromSurface(mRenderer, surface);
+		if (texture)
+		{
+			DrawTexture(texture, offsetX, offsetY, surface->w, surface->h);
+		}
+		SDL_FreeSurface(surface);
+		SDL_DestroyTexture(texture);
+	}
+}
+
 void FWApplication::SetFontSize(int ptSize)
 {
 	mFontSize = ptSize;

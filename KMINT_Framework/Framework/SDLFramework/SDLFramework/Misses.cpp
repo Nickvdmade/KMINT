@@ -1,6 +1,6 @@
 #include "Misses.h"
 
-Misses::Misses(const char name, const Color colour, const int minWater, const int maxWater, Vertex* start) : Person()
+Misses::Misses(const char name, const Color colour, const int minWater, const int maxWater, Vertex* start, const int stepDuration) : Person()
 {
 	name_ = name;
 	colour_ = colour;
@@ -10,7 +10,7 @@ Misses::Misses(const char name, const Color colour, const int minWater, const in
 	startPosition_ = start;
 	position_ = startPosition_;
 	inState_ = false;
-	stepSpeed_ = 2;
+	stepSpeed_ = stepDuration * 2;
 }
 
 Misses::~Misses()
@@ -32,9 +32,6 @@ void Misses::updateState()
 		break;
 	case scared:
 		standStill();
-		break;
-	case giveWater:
-
 		break;
 	default:
 		break;

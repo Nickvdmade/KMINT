@@ -2,6 +2,7 @@
 #include "FWApplication.h"
 #include "Vertex.h"
 #include "StatesEnum.h"
+#include "Rottweiler.h"
 #include <chrono>
 #include <ctime>
 
@@ -13,13 +14,15 @@ public:
 	void setPosition(Vertex* position);
 	char getName();
 	void show(FWApplication* application) const;
-	void moveRandom();
 	virtual void updateState();
+	int giveWaterAmount();
+	std::string currentState();
 
 protected:
 	void initialize();
 	void startState();
 	virtual void wandering();
+	void moveRandom();
 
 	Vertex* position_;
 	Vertex* startPosition_;
@@ -29,6 +32,8 @@ protected:
 	int heigth_;
 	char name_;
 	Color colour_;
+
+	RandomGenerator random;
 
 	States currentState_;
 	States previousState_;

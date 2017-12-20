@@ -33,6 +33,18 @@ void Person::moveRandom()
 	position_ = position_->Move();
 }
 
+std::string Person::currentState()
+{
+	if (currentState_ == init)
+		return "round start";
+	if (currentState_ == wander)
+		return "wandering";
+	if (currentState_ == picture)
+		return "taking a picture";
+	if (currentState_ == scared)
+		return "scared";
+}
+
 void Person::updateState()
 {
 }
@@ -47,6 +59,11 @@ void Person::initialize()
 void Person::wandering()
 {
 	
+}
+
+int Person::giveWaterAmount()
+{
+	return random.GetRandomNumber(minWater_, maxWater_);
 }
 
 void Person::startState()

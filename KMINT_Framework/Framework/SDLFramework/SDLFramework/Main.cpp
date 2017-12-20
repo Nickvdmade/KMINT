@@ -15,6 +15,10 @@
 #include "Mister.h"
 #include "Misses.h"
 
+std::chrono::system_clock::time_point stepTime;
+std::chrono::duration<double> stepTimer;
+int stepDuration = 1;
+
 int main(int args[])
 {
 	//auto window = Window::CreateSDLWindow();
@@ -34,12 +38,12 @@ int main(int args[])
 	map.createMap();
 	
 	//create players
-	Rottweiler* Schaap = new Rottweiler(map.getCave());
 	std::vector<Person*> persons;
-	Person* meneerJanssen = new Mister('M', Color(255, 0, 0, 255), 30, 50, map.getStartMister());
+	Person* meneerJanssen = new Mister('M', Color(255, 0, 0, 255), 30, 50, map.getStartMister(), stepDuration);
 	persons.push_back(meneerJanssen);
-	Person* mevrouwJanssen = new Misses('V', Color(255, 0, 128, 255), 10, 80, map.getStartMisses());
+	Person* mevrouwJanssen = new Misses('V', Color(255, 0, 128, 255), 10, 80, map.getStartMisses(), stepDuration);
 	persons.push_back(mevrouwJanssen);
+	Rottweiler* Schaap = new Rottweiler(map.getCave(), persons, stepDuration);
 	
 	//create rabbits
 	std::vector<Rabbit*> rabbits;
@@ -89,11 +93,20 @@ int main(int args[])
 		}
 		rabbit->show(application);
 		
-		// For the background
-		//application->SetColor(Color(220, 220, 220, 255));
-
-		application->UpdateGameObjects();
-		application->RenderGameObjects();
+		//gamesteps
+		stepTimer = std::chrono::system_clock::now() - stepTime;
+		if (stepTimer.count() > stepDuration)
+		{
+			Schaap->raiseThirst();
+			stepTime = std::chrono::system_clock::now();
+		}
+		
+		//UI
+		application->DrawTextItem("Thirst: " + std::to_string(Schaap->thirstLevel()), 40, 10);
+		application->DrawTextItem("Rabbits eaten: " + std::to_string(Schaap->preyEaten()), 160, 10);
+		application->DrawTextItem("Schaap is currently " + Schaap->currentState(), 450, 10);
+		application->DrawTextItem("Meneer Jannsen is currently " + meneerJanssen->currentState(), 800, 10);
+		application->DrawTextItem("Mevrouw Janssen is currently " + mevrouwJanssen->currentState(), 1100, 10);
 		application->EndTick();
 	}
 		

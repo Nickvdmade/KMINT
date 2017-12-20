@@ -1,6 +1,6 @@
 #include "Mister.h"
 
-Mister::Mister(const char name, const Color colour, const int minWater, const int maxWater, Vertex* start) : Person()
+Mister::Mister(const char name, const Color colour, const int minWater, const int maxWater, Vertex* start, const int stepDuration) : Person()
 {
 	name_ = name;
 	colour_ = colour;
@@ -10,7 +10,7 @@ Mister::Mister(const char name, const Color colour, const int minWater, const in
 	startPosition_ = start;
 	position_ = startPosition_;
 	inState_ = false;
-	stepSpeed_ = 2;
+	stepSpeed_ = stepDuration * 2;
 }
 
 Mister::~Mister()
@@ -36,9 +36,6 @@ void Mister::updateState()
 		else
 			takePicture();
 		break;
-	case giveWater:
-
-		break;
 	default:
 		break;
 	}
@@ -58,7 +55,7 @@ void Mister::takePicture()
 void Mister::wandering()
 {
 	totalTimer_ = std::chrono::system_clock::now() - totalTime_;
-	if (totalTimer_.count() >= 20)
+	if (totalTimer_.count() >= 21)
 	{
 		inState_ = false;
 		previousState_ = currentState_;
