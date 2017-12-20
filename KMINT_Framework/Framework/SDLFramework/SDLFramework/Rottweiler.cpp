@@ -196,6 +196,7 @@ void Rottweiler::findFavouriteOwner()
 
 void Rottweiler::huntPrey()
 {
+
 }
 
 void Rottweiler::eatPrey()
@@ -205,13 +206,13 @@ void Rottweiler::eatPrey()
 
 void Rottweiler::findCave()
 {
+
 }
 
 int Rottweiler::getWaterFromFavouriteOwner()
 {	
 	int water = owners_[favourite_]->giveWaterAmount();
 	calculateFavouriteOwner();
-
 	return water;
 }
 
