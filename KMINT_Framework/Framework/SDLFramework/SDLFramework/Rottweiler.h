@@ -4,6 +4,7 @@
 #include "StatesEnum.h"
 #include "Person.h"
 #include "Rabbit.h"
+#include "Astar.h"
 #include <chrono>
 #include <ctime>
 
@@ -34,6 +35,8 @@ private:
 	void findCave();
 	int getWaterFromFavouriteOwner();
 	void calculateFavouriteOwner();
+	void takeRandomStep();
+	void takeStep();
 
 	Vertex* position_;
 	Vertex* cave_;
@@ -48,8 +51,10 @@ private:
 	std::vector<Person*> owners_;
 	int favourite_;
 	Rabbit* prey_;
+	std::stack<Edge*> path_;
 
 	RandomGenerator random;
+	Astar astar;
 
 	bool inState_;
 	double stepSpeed_;

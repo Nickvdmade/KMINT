@@ -17,7 +17,7 @@
 
 std::chrono::system_clock::time_point stepTime;
 std::chrono::duration<double> stepTimer;
-int stepDuration = 1;
+double stepDuration = 1;
 
 int main(int args[])
 {

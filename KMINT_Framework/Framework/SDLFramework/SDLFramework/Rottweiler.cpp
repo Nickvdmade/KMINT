@@ -12,7 +12,7 @@ Rottweiler::Rottweiler(Vertex* start, std::vector<Person*> owners, const int ste
 	stepSpeed_ = stepDuration;
 	timesDrunk_ = 0;
 	preyEaten_ = 0;
-	favourite_ = random.GetRandomNumber(0, owners_.size() - 1);
+	calculateFavouriteOwner();
 }
 
 Rottweiler::~Rottweiler()
@@ -81,7 +81,10 @@ void Rottweiler::updateState()
 			wandering();
 		break;
 	case hunt:
-		huntPrey();
+		if (!inState_)
+			startState();
+		else
+			huntPrey();
 		break;
 	case eat:
 		eatPrey();
@@ -90,13 +93,19 @@ void Rottweiler::updateState()
 		checkThirstLevel();
 		break;
 	case findPerson:
-		findFavouriteOwner();
+		if (!inState_)
+			startState();
+		else
+			findFavouriteOwner();
 		break;
 	case drink:
 		drinkWater();
 		break;
 	case goToSleep:
-		findCave();
+		if (!inState_)
+			startState();
+		else
+			findCave();
 		break;
 	default:
 		break;
@@ -154,12 +163,7 @@ void Rottweiler::wandering()
 	}
 	else
 	{
-		stepTimer_ = std::chrono::system_clock::now() - stepTime_;
-		if (stepTimer_.count() >= stepSpeed_)
-		{
-			position_ = position_->Move();
-			stepTime_ = std::chrono::system_clock::now();
-		}
+		takeRandomStep();
 	}
 	previousState_ = currentState_;
 	currentState_ = checkThirst;
@@ -168,6 +172,8 @@ void Rottweiler::wandering()
 void Rottweiler::drinkWater()
 {
 	thirst_ -= getWaterFromFavouriteOwner();
+	for (int i = 0; i < path_.size(); i++)
+		path_.pop();
 
 	previousState_ = currentState_;
 	if (++timesDrunk_ == 2)
@@ -191,7 +197,19 @@ void Rottweiler::checkThirstLevel()
 
 void Rottweiler::findFavouriteOwner()
 {
-
+	if (position_ == owners_[favourite_]->getPosition())
+	{
+		previousState_ = currentState_;
+		currentState_ = drink;
+		inState_ = false;
+	}
+	else
+	{
+		if (path_.empty())
+				path_ = astar.Search(position_, owners_[favourite_]->getPosition());
+		else
+			takeStep();
+	}
 }
 
 void Rottweiler::huntPrey()
@@ -202,11 +220,36 @@ void Rottweiler::huntPrey()
 void Rottweiler::eatPrey()
 {
 	preyEaten_++;
+	if (previousState_ == hunt)
+	{
+		previousState_ = currentState_;
+		if (canSeePrey())
+			currentState_ = hunt;
+		else
+			currentState_ = wander;
+	}
+	else
+	{
+		currentState_ = previousState_;
+		previousState_ = eat;
+	}
 }
 
 void Rottweiler::findCave()
 {
-
+	if (position_ == cave_)
+	{
+		previousState_ = currentState_;
+		currentState_ = init;
+		inState_ = false;
+	}
+	else
+	{
+		if (path_.empty())
+			path_ = astar.Search(position_, cave_);
+		else
+			takeStep();
+	}
 }
 
 int Rottweiler::getWaterFromFavouriteOwner()
@@ -221,3 +264,24 @@ void Rottweiler::calculateFavouriteOwner()
 	favourite_ = random.GetRandomNumber(0, owners_.size() - 1);
 }
 
+void Rottweiler::takeRandomStep()
+{
+	stepTimer_ = std::chrono::system_clock::now() - stepTime_;
+	if (stepTimer_.count() >= stepSpeed_)
+	{
+		position_ = position_->Move();
+		stepTime_ = std::chrono::system_clock::now();
+	}
+}
+
+void Rottweiler::takeStep()
+{
+	stepTimer_ = std::chrono::system_clock::now() - stepTime_;
+	if (stepTimer_.count() >= stepSpeed_)
+	{
+		Edge* edge = path_.top();
+		path_.pop();
+		position_ = edge->GetOther(position_);
+		stepTime_ = std::chrono::system_clock::now();
+	}
+}

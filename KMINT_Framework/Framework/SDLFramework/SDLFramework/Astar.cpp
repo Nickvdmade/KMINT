@@ -12,6 +12,8 @@ Astar::~Astar()
 
 std::stack<Edge*> Astar::Search(Vertex* start, Vertex* end)
 {
+	openSet_.clear();
+	closedSet_.clear();
 	openSet_.push_back(start);
 	realCosts_[start] = 0;
 	estimateCosts_[start] = sqrt(pow(start->GetX() + end->GetX(), 2) + pow(start->GetY() + end->GetY(), 2));
@@ -40,11 +42,11 @@ std::stack<Edge*> Astar::Search(Vertex* start, Vertex* end)
 
 void Astar::CheckEdges(Vertex* vertex, Vertex* end)
 {
-	/*std::vector<Edge*> edges = vertex->GetEdges();
+	std::vector<Edge*> edges = vertex->GetEdges();
 	for each(Edge* edge in edges)
 	{
 		Vertex* otherVertex = edge->GetOther(vertex);
-		int cost = realCosts_[vertex] + edge->GetDistance();
+		int cost = realCosts_[vertex] + 20;
 		if (find(closedSet_.begin(), closedSet_.end(), otherVertex) == closedSet_.end())
 		{
 			if (find(openSet_.begin(), openSet_.end(), otherVertex) != openSet_.end())
@@ -63,7 +65,7 @@ void Astar::CheckEdges(Vertex* vertex, Vertex* end)
 				openSet_.push_back(otherVertex);
 			}
 		}
-	}*/
+	}
 }
 
 std::stack<Edge*> Astar::CalculateShortestPath(Vertex* start, Vertex* end)

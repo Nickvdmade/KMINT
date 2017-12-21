@@ -13,6 +13,7 @@ public:
 	~Person();
 	void setPosition(Vertex* position);
 	char getName();
+	Vertex* getPosition();
 	void show(FWApplication* application) const;
 	virtual void updateState();
 	int giveWaterAmount();
@@ -25,7 +26,6 @@ protected:
 	void moveRandom();
 
 	Vertex* position_;
-	Vertex* startPosition_;
 	int minWater_;
 	int maxWater_;
 	int width_;

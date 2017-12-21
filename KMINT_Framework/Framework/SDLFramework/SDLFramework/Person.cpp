@@ -20,6 +20,11 @@ char Person::getName()
 	return name_;
 }
 
+Vertex * Person::getPosition()
+{
+	return position_;
+}
+
 void Person::show(FWApplication* application) const
 {
 	int xPos = position_->GetX() + 5;
@@ -51,7 +56,6 @@ void Person::updateState()
 
 void Person::initialize()
 {
-	position_ = startPosition_;
 	previousState_ = currentState_;
 	currentState_ = wander;
 }

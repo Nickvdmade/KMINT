@@ -1,2 +1,5 @@
-﻿  Main.cpp
-  SDLFramework.vcxproj -> C:\Users\maike\Source\Repos\KMINT\KMINT_Framework\Framework\SDLFramework\Debug\SDLFramework.exe
+﻿  Rottweiler.cpp
+c:\users\nick\source\repos\kmint\kmint_framework\framework\sdlframework\sdlframework\rottweiler.cpp(175): warning C4018: '<': signed/unsigned mismatch
+c:\users\nick\source\repos\kmint\kmint_framework\framework\sdlframework\sdlframework\rottweiler.cpp(68): warning C4715: 'Rottweiler::currentState': not all control paths return a value
+  SDLFramework.vcxproj -> C:\Users\Nick\Source\Repos\KMINT\KMINT_Framework\Framework\SDLFramework\Debug\SDLFramework.exe
+  SDLFramework.vcxproj -> C:\Users\Nick\Source\Repos\KMINT\KMINT_Framework\Framework\SDLFramework\Debug\SDLFramework.pdb (Partial PDB)

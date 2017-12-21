@@ -7,8 +7,7 @@ Mister::Mister(const char name, const Color colour, const int minWater, const in
 	minWater_ = minWater;
 	maxWater_ = maxWater;
 	currentState_ = init;
-	startPosition_ = start;
-	position_ = startPosition_;
+	position_ = start;
 	inState_ = false;
 	stepSpeed_ = stepDuration * 2;
 }
