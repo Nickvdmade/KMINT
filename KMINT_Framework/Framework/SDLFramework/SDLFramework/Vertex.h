@@ -23,6 +23,8 @@ public:
 	Vertex* Move();
 
 	void show(FWApplication* application) const;
+	void setVisited(bool visited);
+	void setShortPath(bool shortPath);
 
 private:
 	std::vector<Edge*> edges_;
@@ -30,5 +32,7 @@ private:
 	int yPosition_;
 	int index_;
 	char type_;
+	bool visited_;
+	bool shortPath_;
 };
 

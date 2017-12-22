@@ -6,6 +6,8 @@ Vertex::Vertex(const int xPosition, const int yPosition, const int index, const 
 	, yPosition_(yPosition)
 	, index_(index)
 	, type_(type)
+	, visited_(false)
+	, shortPath_(false)
 {
 	
 }
@@ -69,6 +71,10 @@ void Vertex::show(FWApplication* application) const
 		default:
 			break;
 	}
+	if (visited_)
+		application->SetColor(Color(0, 100, 0, 255));
+	if(shortPath_)
+		application->SetColor(Color(255, 255, 0, 255));
 	application->DrawRect(xPosition_, yPosition_, 20, 20, true);
 	application->SetColor(Color(0, 0, 0, 255));
 	for (Edge* edge : edges_)
@@ -76,4 +82,14 @@ void Vertex::show(FWApplication* application) const
 		Vertex* vertex = edge->GetOther(this);
 		application->DrawLine(xPosition_ + 10, yPosition_ + 10, vertex->GetX() + 10, vertex->GetY() + 10);
 	}
+}
+
+void Vertex::setVisited(bool visited)
+{
+	visited_ = visited;
+}
+
+void Vertex::setShortPath(bool shortPath)
+{
+	shortPath_ = shortPath;
 }

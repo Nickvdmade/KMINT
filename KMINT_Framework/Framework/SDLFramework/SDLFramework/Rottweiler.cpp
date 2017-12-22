@@ -45,7 +45,12 @@ std::string Rottweiler::currentState()
 		if (previousState_ == eat)
 			return "eating";
 		if (previousState_ == findPerson)
-			return "looking for favourite owner";
+		{
+			if (favourite_ == 0)
+				return "looking for meneer Janssen";
+			else
+				return "looking for mevrouw Janssen";
+		}
 		if (previousState_ == drink)
 			return "drinking";
 		if (previousState_ == goToSleep)
@@ -60,7 +65,12 @@ std::string Rottweiler::currentState()
 	if (currentState_ == eat)
 		return "eating";
 	if (currentState_ == findPerson)
-		return "looking for favourite owner";
+	{
+		if (favourite_ == 0)
+			return "looking for meneer Janssen";
+		else
+			return "looking for mevrouw Janssen";
+	}
 	if (currentState_ == drink)
 		return "drinking";
 	if (currentState_ == goToSleep)
@@ -132,7 +142,7 @@ void Rottweiler::initialize()
 {
 	previousState_ = currentState_;
 	currentState_ = wander;
-	thirst_ = 0;
+	thirst_ = 95;
 	timesDrunk_ = 0;
 	preyEaten_ = 0;
 }
@@ -199,6 +209,7 @@ void Rottweiler::findFavouriteOwner()
 {
 	if (position_ == owners_[favourite_]->getPosition())
 	{
+		astar.clearVisited();
 		previousState_ = currentState_;
 		currentState_ = drink;
 		inState_ = false;

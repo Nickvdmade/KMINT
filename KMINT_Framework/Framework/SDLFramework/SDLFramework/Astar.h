@@ -10,6 +10,7 @@ public:
 	Astar();
 	~Astar();
 	std::stack<Edge*> Search(Vertex* start, Vertex* end);
+	void clearVisited();
 
 private:
 	std::map<Vertex*, int> realCosts_;

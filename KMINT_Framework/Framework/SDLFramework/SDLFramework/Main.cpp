@@ -84,15 +84,15 @@ int main(int args[])
 		}
 
 		map.show(application);
-		Schaap->show(application);
-		Schaap->updateState();
 		for (Person* person : persons)
 		{
 			person->show(application);
 			person->updateState();
 		}
 		rabbit->show(application);
-		
+		Schaap->show(application);
+		Schaap->updateState();
+
 		//gamesteps
 		stepTimer = std::chrono::system_clock::now() - stepTime;
 		if (stepTimer.count() > stepDuration)
@@ -102,11 +102,14 @@ int main(int args[])
 		}
 		
 		//UI
-		application->DrawTextItem("Thirst: " + std::to_string(Schaap->thirstLevel()), 40, 10);
-		application->DrawTextItem("Rabbits eaten: " + std::to_string(Schaap->preyEaten()), 160, 10);
-		application->DrawTextItem("Schaap is currently " + Schaap->currentState(), 450, 10);
-		application->DrawTextItem("Meneer Jannsen is currently " + meneerJanssen->currentState(), 800, 10);
-		application->DrawTextItem("Mevrouw Janssen is currently " + mevrouwJanssen->currentState(), 1100, 10);
+		application->SetColor(Color(255, 255, 255, 255));
+		application->DrawTextItem("Current round: " + std::to_string(1), 100, 10);
+		application->DrawTextItem("Rabbits eaten: " + std::to_string(Schaap->preyEaten()), 300, 10);
+		application->DrawTextItem("Rabbits drowned: " + std::to_string(0), 500, 10);
+		application->DrawTextItem("Thirst: " + std::to_string(Schaap->thirstLevel()), 100, 710);
+		application->DrawTextItem("Schaap is currently " + Schaap->currentState(), 300, 710);
+		application->DrawTextItem("Meneer Jannsen is currently " + meneerJanssen->currentState(), 650, 710);
+		application->DrawTextItem("Mevrouw Janssen is currently " + mevrouwJanssen->currentState(), 1000, 710);
 		application->EndTick();
 	}
 		
