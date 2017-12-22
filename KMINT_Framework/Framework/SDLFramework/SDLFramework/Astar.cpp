@@ -17,7 +17,7 @@ std::stack<Edge*> Astar::Search(Vertex* start, Vertex* end)
 	closedSet_.clear();
 	openSet_.push_back(start);
 	realCosts_[start] = 0;
-	estimateCosts_[start] = sqrt(pow(start->GetX() + end->GetX(), 2) + pow(start->GetY() + end->GetY(), 2));
+	estimateCosts_[start] = sqrt(pow(end->GetX() - start->GetX(), 2) + pow(end->GetY() - start->GetY(), 2));
 	while(!openSet_.empty())
 	{
 		auto itvector = openSet_.begin();
@@ -75,7 +75,7 @@ void Astar::CheckEdges(Vertex* vertex, Vertex* end)
 			{
 				realCosts_[otherVertex] = cost;
 				shortReverse_[otherVertex] = edge;
-				estimateCosts_[otherVertex] = sqrt(pow(otherVertex->GetX() + end->GetX(), 2) + pow(otherVertex->GetY() + end->GetY(), 2));
+				estimateCosts_[otherVertex] = sqrt(pow(end->GetX() - otherVertex->GetX(), 2) + pow(end->GetY() - otherVertex->GetY(), 2));
 				openSet_.push_back(otherVertex);
 				//vertex->setVisited(true);
 			}
