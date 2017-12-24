@@ -9,8 +9,10 @@ Rabbit::Rabbit(const float dogAttraction, const float waterAttraction, const flo
 	, alignment_(alignment)
 {
 	width_ = 5;
-	heigth_ = 5;
+	height_ = 5;
 	dead_ = false;
+	xOffset_ = 0;
+	yOffset_ = 0;
 }
 
 Rabbit::~Rabbit()
@@ -18,19 +20,23 @@ Rabbit::~Rabbit()
 
 }
 
-void Rabbit::setPosition(Vertex* position)
-{
+void Rabbit::setStartPosition(Vertex* position)
+{   
 	position_ = position;
+	calculateOffset();
+	position_->addVisitor();
 }
 
 void Rabbit::show(FWApplication* application) const
 {
 	if (!dead_) 
 	{
-		int xPos = position_->GetX() + 7;
-		int yPos = position_->GetY() + 7;
+		int xPos = position_->GetX() + xOffset_;
+		int yPos = position_->GetY() + yOffset_;
 		application->SetColor(Color(255, 255, 255, 255));
-		application->DrawRect(xPos, yPos, width_, heigth_, true);
+		application->DrawRect(xPos, yPos, width_, height_, true);
+		application->SetColor(Color(128, 128, 128, 255));
+		application->DrawRect(xPos, yPos, width_, height_, false);
 	}
 }
 
@@ -48,6 +54,13 @@ void Rabbit::die(std::string cause)
 {
 	dead_ = true;
 	causeOfDeath_ = cause;
+}
+
+void Rabbit::calculateOffset()
+{
+	int visitors = position_->getVisitors();
+	xOffset_ = (width_ * (visitors % 4));
+	yOffset_ = (height_ * (visitors / 4));
 }
 
 std::string Rabbit::causeOfDeath()

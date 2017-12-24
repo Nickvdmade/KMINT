@@ -25,6 +25,9 @@ public:
 	void show(FWApplication* application) const;
 	void setVisited(bool visited);
 	void setShortPath(bool shortPath);
+	void addVisitor();
+	void removeVisitor();
+	int getVisitors();
 
 private:
 	std::vector<Edge*> edges_;
@@ -34,5 +37,6 @@ private:
 	char type_;
 	bool visited_;
 	bool shortPath_;
+	int visitors_;
 };
 

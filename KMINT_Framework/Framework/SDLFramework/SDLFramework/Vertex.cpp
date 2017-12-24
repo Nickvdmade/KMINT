@@ -8,6 +8,7 @@ Vertex::Vertex(const int xPosition, const int yPosition, const int index, const 
 	, type_(type)
 	, visited_(false)
 	, shortPath_(false)
+	, visitors_(0)
 {
 	
 }
@@ -92,4 +93,19 @@ void Vertex::setVisited(bool visited)
 void Vertex::setShortPath(bool shortPath)
 {
 	shortPath_ = shortPath;
+}
+
+void Vertex::addVisitor()
+{
+	visitors_++;
+}
+
+void Vertex::removeVisitor()
+{
+	visitors_--;
+}
+
+int Vertex::getVisitors()
+{
+	return visitors_;
 }

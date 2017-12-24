@@ -90,7 +90,7 @@ int main(int args[])
 			person->updateState();
 		}
 		population->show(application);
-		population->update(Schaap);
+		population->update();
 		Schaap->show(application);
 		Schaap->updateState();
 

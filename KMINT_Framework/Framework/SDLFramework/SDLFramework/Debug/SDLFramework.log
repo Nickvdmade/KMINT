@@ -1,4 +1,4 @@
-﻿  Rottweiler.cpp
-c:\users\maike\source\repos\kmint\kmint_framework\framework\sdlframework\sdlframework\rottweiler.cpp(178): warning C4018: '<': signed/unsigned mismatch
-c:\users\maike\source\repos\kmint\kmint_framework\framework\sdlframework\sdlframework\rottweiler.cpp(77): warning C4715: 'Rottweiler::currentState': not all control paths return a value
+﻿  Map.cpp
+c:\users\maike\source\repos\kmint\kmint_framework\framework\sdlframework\sdlframework\map.cpp(23): warning C4018: '<': signed/unsigned mismatch
+c:\users\maike\source\repos\kmint\kmint_framework\framework\sdlframework\sdlframework\map.cpp(26): warning C4018: '<': signed/unsigned mismatch
   SDLFramework.vcxproj -> C:\Users\maike\Source\Repos\KMINT\KMINT_Framework\Framework\SDLFramework\Debug\SDLFramework.exe

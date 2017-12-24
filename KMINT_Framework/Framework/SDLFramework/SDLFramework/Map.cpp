@@ -36,9 +36,13 @@ void Map::addRabbits(std::vector<Rabbit*> rabbits)
 	for (Rabbit* rabbit : rabbits)
 	{
 		Vertex* position = vertices_[0];
-		while(position->getType() != 'X')
+		while (position->getType() != 'X')
+		{
 			position = vertices_[random.GetRandomNumber(0, vertices_.size() - 1)];
-		rabbit->setPosition(position);
+			while (position->getVisitors() > 15)
+				position = vertices_[random.GetRandomNumber(0, vertices_.size() - 1)];
+		}
+		rabbit->setStartPosition(position);
 	}
 }
 
