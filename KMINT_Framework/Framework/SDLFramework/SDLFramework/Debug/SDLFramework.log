@@ -1,5 +1,4 @@
-﻿  Astar.cpp
-c:\users\nick\source\repos\kmint\kmint_framework\framework\sdlframework\sdlframework\astar.cpp(20): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
-c:\users\nick\source\repos\kmint\kmint_framework\framework\sdlframework\sdlframework\astar.cpp(78): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
-  SDLFramework.vcxproj -> C:\Users\Nick\Source\Repos\KMINT\KMINT_Framework\Framework\SDLFramework\Debug\SDLFramework.exe
-  SDLFramework.vcxproj -> C:\Users\Nick\Source\Repos\KMINT\KMINT_Framework\Framework\SDLFramework\Debug\SDLFramework.pdb (Partial PDB)
+﻿  Rottweiler.cpp
+c:\users\maike\source\repos\kmint\kmint_framework\framework\sdlframework\sdlframework\rottweiler.cpp(178): warning C4018: '<': signed/unsigned mismatch
+c:\users\maike\source\repos\kmint\kmint_framework\framework\sdlframework\sdlframework\rottweiler.cpp(77): warning C4715: 'Rottweiler::currentState': not all control paths return a value
+  SDLFramework.vcxproj -> C:\Users\maike\Source\Repos\KMINT\KMINT_Framework\Framework\SDLFramework\Debug\SDLFramework.exe

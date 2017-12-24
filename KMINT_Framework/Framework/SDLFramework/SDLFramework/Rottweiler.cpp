@@ -11,7 +11,6 @@ Rottweiler::Rottweiler(Vertex* start, std::vector<Person*> owners, const int ste
 	currentState_ = init;
 	stepSpeed_ = stepDuration;
 	timesDrunk_ = 0;
-	preyEaten_ = 0;
 	calculateFavouriteOwner();
 }
 
@@ -133,18 +132,12 @@ int Rottweiler::thirstLevel()
 	return thirst_;
 }
 
-int Rottweiler::preyEaten()
-{
-	return preyEaten_;
-}
-
 void Rottweiler::initialize()
 {
 	previousState_ = currentState_;
 	currentState_ = wander;
-	thirst_ = 95;
+	thirst_ = 0;
 	timesDrunk_ = 0;
-	preyEaten_ = 0;
 }
 
 void Rottweiler::startState()
@@ -230,7 +223,7 @@ void Rottweiler::huntPrey()
 
 void Rottweiler::eatPrey()
 {
-	preyEaten_++;
+	//rabbitPopulation->killRabbit(Rabbit* prey)
 	if (previousState_ == hunt)
 	{
 		previousState_ = currentState_;

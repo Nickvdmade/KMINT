@@ -16,3 +16,9 @@ int RandomGenerator::GetRandomNumber(int low, int high) const
 	std::uniform_int_distribution<int> distribution(low, high);
 	return distribution(*generator);
 }
+
+float RandomGenerator::GetRandomFloat(float low, float high) const
+{
+	std::uniform_real_distribution<float> distribution(low, high);
+	return distribution(*generator);
+}

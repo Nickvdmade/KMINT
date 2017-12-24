@@ -14,7 +14,7 @@
     <ProjectGuid>{1BDED753-9F4B-440C-9BE8-4FA0335A4310}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>SDLFramework</RootNamespace>
-    <WindowsTargetPlatformVersion>10.0.15063.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0.16299.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -96,6 +96,7 @@
     <ClCompile Include="Person.cpp" />
     <ClCompile Include="Rabbit.cpp" />
     <ClCompile Include="Main.cpp" />
+    <ClCompile Include="RabbitPopulation.cpp" />
     <ClCompile Include="RandomGenerator.cpp" />
     <ClCompile Include="FileReader.cpp" />
     <ClCompile Include="Rottweiler.cpp" />
@@ -117,6 +118,7 @@
     <ClInclude Include="Person.h" />
     <ClInclude Include="Rabbit.h" />
     <ClInclude Include="IGameObject.h" />
+    <ClInclude Include="RabbitPopulation.h" />
     <ClInclude Include="RandomGenerator.h" />
     <ClInclude Include="FileReader.h" />
     <ClInclude Include="Rottweiler.h" />

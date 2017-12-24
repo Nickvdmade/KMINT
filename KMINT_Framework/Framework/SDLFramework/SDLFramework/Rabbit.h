@@ -8,8 +8,12 @@ public:
 	~Rabbit();
 	void setPosition(Vertex* position);
 	void show(FWApplication* application) const;
-
+	void update();
+	bool isDead();
+	std::string causeOfDeath();
+	void die(std::string cause);
 private:
+
 	Vertex* position_;
 	int width_;
 	int heigth_;
@@ -18,4 +22,6 @@ private:
 	float cohesion_;
 	float separation_;
 	float alignment_;
+	bool dead_;
+	std::string causeOfDeath_;
 };

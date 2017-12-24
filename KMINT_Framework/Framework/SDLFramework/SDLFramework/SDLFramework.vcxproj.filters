@@ -68,6 +68,9 @@
     <ClCompile Include="Rabbit.cpp">
       <Filter>Eindopdracht\Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="RabbitPopulation.cpp">
+      <Filter>Eindopdracht\Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="SDL2.dll" />
@@ -122,6 +125,9 @@
       <Filter>Eindopdracht\Header Files</Filter>
     </ClInclude>
     <ClInclude Include="StatesEnum.h">
+      <Filter>Eindopdracht\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="RabbitPopulation.h">
       <Filter>Eindopdracht\Header Files</Filter>
     </ClInclude>
   </ItemGroup>

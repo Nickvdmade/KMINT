@@ -19,7 +19,6 @@ public:
 	void updateState();
 	void raiseThirst();
 	int thirstLevel();
-	int preyEaten();
 
 private:
 	void initialize();
@@ -44,7 +43,6 @@ private:
 	int height_;
 	int thirst_;
 	int timesDrunk_;
-	int preyEaten_;
 	States currentState_;
 	States previousState_;
 

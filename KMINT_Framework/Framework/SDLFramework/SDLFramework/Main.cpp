@@ -14,6 +14,7 @@
 #include "Rottweiler.h"
 #include "Mister.h"
 #include "Misses.h"
+#include "RabbitPopulation.h"
 
 std::chrono::system_clock::time_point stepTime;
 std::chrono::duration<double> stepTimer;
@@ -46,10 +47,9 @@ int main(int args[])
 	Rottweiler* Schaap = new Rottweiler(map.getCave(), persons, stepDuration);
 	
 	//create rabbits
-	std::vector<Rabbit*> rabbits;
-	Rabbit* rabbit = new Rabbit(0, 0, 0, 0, 0);
-	rabbits.push_back(rabbit);
-	map.addRabbits(rabbits);
+	RabbitPopulation* population = new RabbitPopulation(100);
+	population->initialize();
+	map.addRabbits(population->get());
 
 	Astar astar;
 	
@@ -89,7 +89,8 @@ int main(int args[])
 			person->show(application);
 			person->updateState();
 		}
-		rabbit->show(application);
+		population->show(application);
+		population->update(Schaap);
 		Schaap->show(application);
 		Schaap->updateState();
 
@@ -104,8 +105,8 @@ int main(int args[])
 		//UI
 		application->SetColor(Color(255, 255, 255, 255));
 		application->DrawTextItem("Current round: " + std::to_string(1), 100, 10);
-		application->DrawTextItem("Rabbits eaten: " + std::to_string(Schaap->preyEaten()), 300, 10);
-		application->DrawTextItem("Rabbits drowned: " + std::to_string(0), 500, 10);
+		application->DrawTextItem("Rabbits eaten: " + std::to_string(population->getEaten()), 300, 10);
+		application->DrawTextItem("Rabbits drowned: " + std::to_string(population->getDrowned()), 500, 10);
 		application->DrawTextItem("Thirst: " + std::to_string(Schaap->thirstLevel()), 100, 710);
 		application->DrawTextItem("Schaap is currently " + Schaap->currentState(), 300, 710);
 		application->DrawTextItem("Meneer Jannsen is currently " + meneerJanssen->currentState(), 650, 710);
@@ -116,8 +117,7 @@ int main(int args[])
 	delete mevrouwJanssen;
 	delete meneerJanssen;
 	delete Schaap;
-	for (Rabbit* rabbit : rabbits)
-		delete rabbit;
+	delete population;
 
 	return EXIT_SUCCESS;
 }

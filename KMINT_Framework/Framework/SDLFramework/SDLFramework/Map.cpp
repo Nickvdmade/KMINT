@@ -32,8 +32,14 @@ void Map::createMap()
 
 void Map::addRabbits(std::vector<Rabbit*> rabbits)
 {
+	RandomGenerator random;
 	for (Rabbit* rabbit : rabbits)
-		rabbit->setPosition(vertices_[500]);
+	{
+		Vertex* position = vertices_[0];
+		while(position->getType() != 'X')
+			position = vertices_[random.GetRandomNumber(0, vertices_.size() - 1)];
+		rabbit->setPosition(position);
+	}
 }
 
 void Map::show(FWApplication* application)

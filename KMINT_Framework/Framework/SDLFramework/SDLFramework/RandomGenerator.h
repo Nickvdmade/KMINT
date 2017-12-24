@@ -12,4 +12,5 @@ public:
 	RandomGenerator();
 	~RandomGenerator();
 	int GetRandomNumber(int, int) const;
+	float GetRandomFloat(float low, float high) const;
 };
