@@ -90,6 +90,7 @@ int main(int args[])
 			person->updateState();
 		}
 		population->show(application);
+		population->update(Schaap);
 		Schaap->show(application);
 		Schaap->updateState();
 
@@ -97,7 +98,6 @@ int main(int args[])
 		stepTimer = std::chrono::system_clock::now() - stepTime;
 		if (stepTimer.count() > stepDuration)
 		{
-			population->update();
 			Schaap->raiseThirst();
 			stepTime = std::chrono::system_clock::now();
 		}

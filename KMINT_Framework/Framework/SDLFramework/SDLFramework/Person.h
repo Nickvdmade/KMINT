@@ -2,9 +2,7 @@
 #include "FWApplication.h"
 #include "Vertex.h"
 #include "StatesEnum.h"
-#include "Rottweiler.h"
 #include <chrono>
-#include <ctime>
 
 class Person
 {

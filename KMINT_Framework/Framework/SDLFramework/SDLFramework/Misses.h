@@ -6,10 +6,10 @@ class Misses : public Person
 public:
 	Misses(const char name, const Color colour, const int minWater, const int maxWater, Vertex* start, const int stepDuration);
 	~Misses();
-	void updateState();
+	void updateState() override;
 
 private:
 	void standStill();
-	bool canSeeRabbit();
+	bool canSeeRabbit() const;
 	void wandering() override;
 };

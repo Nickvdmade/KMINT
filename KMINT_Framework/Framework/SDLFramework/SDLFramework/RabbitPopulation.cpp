@@ -1,11 +1,13 @@
 #include "RabbitPopulation.h"
+#include <queue>
 
-RabbitPopulation::RabbitPopulation(int size)
+RabbitPopulation::RabbitPopulation(const int size)
 	: size_(size)
 	, drowned_(0)
 	, eaten_(0)
 	, generation_(0)
 {
+	stepSpeed_ = 2;
 }
 
 
@@ -63,22 +65,64 @@ void RabbitPopulation::place()
 		}
 		rabbit->setStartPosition(position);
 	}
+	stepTime_ = std::chrono::system_clock::now();
 }
 
-void RabbitPopulation::update()
+Rabbit* RabbitPopulation::findClosestRabbit(Vertex* position)
 {
-	Vertex* newPosition;
-	Vertex* currentPosition;
-	for (Rabbit* rabbit : population_)
+	for (Edge* edge : position->GetEdges())
 	{
-		if (!rabbit->isDead())
+		Vertex* other = edge->GetOther(position);
+		if (other->getVisitors() > 0)
 		{
-			currentPosition = rabbit->getPosition();
-			if (currentPosition->getType() == '~') 
-				killRabbit(rabbit, "drowned");
-			else
+			return findRabbit(other);
+		}
+		for (Edge* otherEdge : other->GetEdges())
+		{
+			Vertex* another = otherEdge->GetOther(other);
+			if (another->getVisitors() > 0)
 			{
-				rabbit->calculateHeading();
+				return findRabbit(another);
+			}
+		}
+	}
+	return nullptr;
+}
+
+Vertex* RabbitPopulation::findClosestWater(Vertex* position)
+{
+	for (Edge* edge : position->GetEdges())
+	{
+		Vertex* other = edge->GetOther(position);
+		if (other->getType() == '~')
+		{
+			return other;
+		}
+		for (Edge* otherEdge : other->GetEdges())
+		{
+			Vertex* another = otherEdge->GetOther(other);
+			if (another->getType() == '~')
+			{
+				return another;
+			}
+		}
+	}
+	return nullptr;
+}
+
+void RabbitPopulation::update(Rottweiler* dog)
+{
+	stepTimer_ = std::chrono::system_clock::now() - stepTime_;
+	if (stepTimer_.count() >= stepSpeed_)
+	{
+		Vertex* newPosition;
+		Vertex* currentPosition;
+		for (Rabbit* rabbit : population_)
+		{
+			if (!rabbit->isDead())
+			{
+				currentPosition = rabbit->getPosition();
+				rabbit->calculateHeading(findClosestRabbit(rabbit->getPosition()), dog, findClosestWater(rabbit->getPosition()));
 				switch (rabbit->getHeading())
 				{
 				case north:
@@ -97,28 +141,32 @@ void RabbitPopulation::update()
 					newPosition = currentPosition;
 					break;
 				}
-				rabbit->move(newPosition);
+				if (newPosition->getType() == '~')
+					killRabbit(rabbit, "drowned");
+				else
+					rabbit->move(newPosition);
 			}
 		}
+		stepTime_ = std::chrono::system_clock::now();
 	}
 }
 
-std::vector<Rabbit*> RabbitPopulation::getPopulation()
+std::vector<Rabbit*> RabbitPopulation::getPopulation() const
 {
 	return population_;
 }
 
-int RabbitPopulation::getDrowned()
+int RabbitPopulation::getDrowned() const
 {
 	return drowned_;
 }
 
-int RabbitPopulation::getEaten()
+int RabbitPopulation::getEaten() const
 {
 	return eaten_;
 }
 
-void RabbitPopulation::killRabbit(Rabbit * rabbit, std::string cause)
+void RabbitPopulation::killRabbit(Rabbit * rabbit, const std::string cause)
 {
 	if (cause == "eaten")
 		eaten_++;
@@ -139,7 +187,19 @@ void RabbitPopulation::nextGeneration()
 	drowned_ = 0;
 }
 
-int RabbitPopulation::getGeneration()
+int RabbitPopulation::getGeneration() const
 {
 	return generation_;
+}
+
+Rabbit* RabbitPopulation::findRabbit(Vertex* position)
+{
+	for (Rabbit* rabbit : population_)
+	{
+		if (rabbit->getPosition() == position)
+		{
+			return rabbit;
+		}
+	}
+	return nullptr;
 }

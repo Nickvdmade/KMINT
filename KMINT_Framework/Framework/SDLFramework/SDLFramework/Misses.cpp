@@ -1,4 +1,5 @@
 #include "Misses.h"
+#include "Edge.h"
 
 Misses::Misses(const char name, const Color colour, const int minWater, const int maxWater, Vertex* start, const int stepDuration) : Person()
 {
@@ -46,8 +47,13 @@ void Misses::standStill()
 	}
 }
 
-bool Misses::canSeeRabbit()
+bool Misses::canSeeRabbit() const
 {
+	if (position_->getVisitors() > 0)
+		return true;
+	for (Edge* edge : position_->GetEdges())
+		if (edge->GetOther(position_)->getVisitors() > 0)
+			return true;
 	return false;
 }
 

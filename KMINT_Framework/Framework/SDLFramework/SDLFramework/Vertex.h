@@ -22,6 +22,7 @@ public:
 
 	void show(FWApplication* application) const;
 	void setVisited(bool visited);
+	bool visited();
 	void setShortPath(bool shortPath);
 	void addVisitor();
 	void removeVisitor();

@@ -14,7 +14,8 @@ public:
 
 private:
 	std::map<Vertex*, int> realCosts_;
-	std::map<Vertex*, int> estimateCosts_;
+	std::map<Vertex*, float> estimateCosts_;
+	int startEstimateCost_;
 	std::map<Vertex*, Edge*> shortReverse_;
 	std::vector<Vertex*> openSet_;
 	std::vector<Vertex*> closedSet_;

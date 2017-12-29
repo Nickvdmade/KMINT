@@ -1,7 +1,8 @@
 #pragma once
 #include "Vertex.h"
-#include <chrono>
-#include <ctime>
+#include <map>
+
+class Rottweiler;
 
 class Rabbit
 {
@@ -10,16 +11,21 @@ public:
 	~Rabbit();
 	void setStartPosition(Vertex* position);
 	void show(FWApplication* application) const;
-	bool isDead();
-	std::string causeOfDeath();
+	bool isDead() const;
+	std::string causeOfDeath() const;
 	void die(std::string cause);
-	int getHeading();
+	int getHeading() const;
 	void move(Vertex* position);
-	Vertex* getPosition();
-	void calculateHeading();
+	Vertex* getPosition() const;
+	void calculateHeading(Rabbit* closestRabbit, Rottweiler* dog, Vertex* closestWater);
 	void setHunted(bool hunted);
 private:
 	void calculateOffset();
+	void calculateDogAttraction(Rottweiler* dog);
+	void calculateWaterAttraction(Vertex* waterPosition);
+	void calculateCohesion(Vertex* rabbit);
+	void calculateSeperation(Vertex* rabbit);
+	void calculateAlignment(Rabbit* rabbit);
 
 	Vertex* position_;
 	int width_;
@@ -35,6 +41,7 @@ private:
 	int yOffset_;
 	int heading_;
 	bool hunted_;
+	std::map<int, float> directions_;
 };
 
 enum heading 

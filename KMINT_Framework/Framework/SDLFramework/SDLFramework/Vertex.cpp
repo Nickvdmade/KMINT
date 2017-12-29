@@ -90,6 +90,11 @@ void Vertex::setVisited(bool visited)
 	visited_ = visited;
 }
 
+bool Vertex::visited()
+{
+	return visited_;
+}
+
 void Vertex::setShortPath(bool shortPath)
 {
 	shortPath_ = shortPath;
