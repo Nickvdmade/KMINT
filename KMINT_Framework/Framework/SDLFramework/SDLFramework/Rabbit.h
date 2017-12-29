@@ -1,5 +1,7 @@
 #pragma once
 #include "Vertex.h"
+#include <chrono>
+#include <ctime>
 
 class Rabbit
 {
@@ -8,10 +10,14 @@ public:
 	~Rabbit();
 	void setStartPosition(Vertex* position);
 	void show(FWApplication* application) const;
-	void update();
 	bool isDead();
 	std::string causeOfDeath();
 	void die(std::string cause);
+	int getHeading();
+	void move(Vertex* position);
+	Vertex* getPosition();
+	void calculateHeading();
+	void setHunted(bool hunted);
 private:
 	void calculateOffset();
 
@@ -27,4 +33,14 @@ private:
 	std::string causeOfDeath_;
 	int xOffset_;
 	int yOffset_;
+	int heading_;
+	bool hunted_;
+};
+
+enum heading 
+{
+	north,
+	east,
+	south,
+	west
 };

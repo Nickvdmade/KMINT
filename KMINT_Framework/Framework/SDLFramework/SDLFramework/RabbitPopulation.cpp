@@ -1,11 +1,10 @@
 #include "RabbitPopulation.h"
 
-
-
 RabbitPopulation::RabbitPopulation(int size)
 	: size_(size)
 	, drowned_(0)
 	, eaten_(0)
+	, generation_(0)
 {
 }
 
@@ -16,8 +15,16 @@ RabbitPopulation::~RabbitPopulation()
 		delete rabbit;
 }
 
-void RabbitPopulation::initialize()
+void RabbitPopulation::createFirstGeneration(Map* map)
 {
+	mapVertices_ = map->getVertices();
+	createRandomGeneration();
+	place();
+}
+
+void RabbitPopulation::createRandomGeneration()
+{
+	generation_++;
 	RandomGenerator random;
 	float dogAttraction; 
 	float waterAttraction;
@@ -36,21 +43,69 @@ void RabbitPopulation::initialize()
 	}
 }
 
-std::vector<Rabbit*> RabbitPopulation::get()
-{
-	return population_;
-}
-
 void RabbitPopulation::show(FWApplication* application)
 {
 	for (Rabbit* rabbit : population_)
 		rabbit->show(application);
 }
 
+void RabbitPopulation::place()
+{
+	RandomGenerator random;
+	for (Rabbit* rabbit : population_)
+	{
+		Vertex* position = mapVertices_[0];
+		while (position->getType() != 'X')
+		{
+			position = mapVertices_[random.GetRandomNumber(0, mapVertices_.size() - 1)];
+			while (position->getVisitors() > 15)
+				position = mapVertices_[random.GetRandomNumber(0, mapVertices_.size() - 1)];
+		}
+		rabbit->setStartPosition(position);
+	}
+}
+
 void RabbitPopulation::update()
 {
+	Vertex* newPosition;
+	Vertex* currentPosition;
 	for (Rabbit* rabbit : population_)
-		rabbit->update();
+	{
+		if (!rabbit->isDead())
+		{
+			currentPosition = rabbit->getPosition();
+			if (currentPosition->getType() == '~') 
+				killRabbit(rabbit, "drowned");
+			else
+			{
+				rabbit->calculateHeading();
+				switch (rabbit->getHeading())
+				{
+				case north:
+					newPosition = mapVertices_[currentPosition->GetIndex() - 64];
+					break;
+				case east:
+					newPosition = mapVertices_[currentPosition->GetIndex() + 1];
+					break;
+				case south:
+					newPosition = mapVertices_[currentPosition->GetIndex() + 64];
+					break;
+				case west:
+					newPosition = mapVertices_[currentPosition->GetIndex() - 1];
+					break;
+				default:
+					newPosition = currentPosition;
+					break;
+				}
+				rabbit->move(newPosition);
+			}
+		}
+	}
+}
+
+std::vector<Rabbit*> RabbitPopulation::getPopulation()
+{
+	return population_;
 }
 
 int RabbitPopulation::getDrowned()
@@ -70,4 +125,21 @@ void RabbitPopulation::killRabbit(Rabbit * rabbit, std::string cause)
 	else if (cause == "drowned")
 		drowned_++;
 	rabbit->die(cause);
+}
+
+void RabbitPopulation::nextGeneration()
+{
+	//previousPopulation_ = population_;
+	for (Rabbit* rabbit : population_)
+		delete rabbit;
+	population_.clear();
+	createRandomGeneration();
+	place();
+	eaten_ = 0;
+	drowned_ = 0;
+}
+
+int RabbitPopulation::getGeneration()
+{
+	return generation_;
 }

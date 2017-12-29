@@ -4,8 +4,6 @@
 #include "RandomGenerator.h"
 #include "FWApplication.h"
 
-class Rottweiler;
-class Person;
 class Edge;
 
 class Vertex

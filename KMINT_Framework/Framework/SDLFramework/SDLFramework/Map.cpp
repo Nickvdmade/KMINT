@@ -30,22 +30,6 @@ void Map::createMap()
 	}
 }
 
-void Map::addRabbits(std::vector<Rabbit*> rabbits)
-{
-	RandomGenerator random;
-	for (Rabbit* rabbit : rabbits)
-	{
-		Vertex* position = vertices_[0];
-		while (position->getType() != 'X')
-		{
-			position = vertices_[random.GetRandomNumber(0, vertices_.size() - 1)];
-			while (position->getVisitors() > 15)
-				position = vertices_[random.GetRandomNumber(0, vertices_.size() - 1)];
-		}
-		rabbit->setStartPosition(position);
-	}
-}
-
 void Map::show(FWApplication* application)
 {
 	for (Vertex* vertex : vertices_)
@@ -65,6 +49,11 @@ Vertex * Map::getStartMisses()
 Vertex * Map::getCave()
 {
 	return cave;
+}
+
+std::vector<Vertex*> Map::getVertices()
+{
+	return vertices_;
 }
 
 void Map::addVertex(const std::string line, const int xPos, const int yPos, const int index)

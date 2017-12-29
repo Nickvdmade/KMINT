@@ -35,21 +35,21 @@ int main(int args[])
 	
 	//create map
 	FileReader reader;
-	Map map(reader.readFile("graaf.txt"));
-	map.createMap();
+	Map* map = new Map(reader.readFile("graaf.txt"));
+	map->createMap();
 	
 	//create players
 	std::vector<Person*> persons;
-	Person* meneerJanssen = new Mister('M', Color(255, 0, 0, 255), 30, 50, map.getStartMister(), stepDuration);
+	Person* meneerJanssen = new Mister('M', Color(255, 0, 0, 255), 30, 50, map->getStartMister(), stepDuration);
 	persons.push_back(meneerJanssen);
-	Person* mevrouwJanssen = new Misses('V', Color(255, 0, 128, 255), 10, 80, map.getStartMisses(), stepDuration);
+	Person* mevrouwJanssen = new Misses('V', Color(255, 0, 128, 255), 10, 80, map->getStartMisses(), stepDuration);
 	persons.push_back(mevrouwJanssen);
-	Rottweiler* Schaap = new Rottweiler(map.getCave(), persons, stepDuration);
+	Rottweiler* Schaap = new Rottweiler(map->getCave(), persons, stepDuration);
 	
 	//create rabbits
 	RabbitPopulation* population = new RabbitPopulation(100);
-	population->initialize();
-	map.addRabbits(population->get());
+	population->createFirstGeneration(map);
+	Schaap->setPreyPopulation(population);
 
 	Astar astar;
 	
@@ -83,14 +83,13 @@ int main(int args[])
 			}
 		}
 
-		map.show(application);
+		map->show(application);
 		for (Person* person : persons)
 		{
 			person->show(application);
 			person->updateState();
 		}
 		population->show(application);
-		population->update();
 		Schaap->show(application);
 		Schaap->updateState();
 
@@ -98,13 +97,21 @@ int main(int args[])
 		stepTimer = std::chrono::system_clock::now() - stepTime;
 		if (stepTimer.count() > stepDuration)
 		{
+			population->update();
 			Schaap->raiseThirst();
 			stepTime = std::chrono::system_clock::now();
 		}
-		
+
+		//new round
+		if (Schaap->currentState() == "round start")
+		{
+			population->nextGeneration();
+			Schaap->setPreyPopulation(population);
+		}
+			
 		//UI
 		application->SetColor(Color(255, 255, 255, 255));
-		application->DrawTextItem("Current round: " + std::to_string(1), 100, 10);
+		application->DrawTextItem("Current round: " + std::to_string(population->getGeneration()), 100, 10);
 		application->DrawTextItem("Rabbits eaten: " + std::to_string(population->getEaten()), 300, 10);
 		application->DrawTextItem("Rabbits drowned: " + std::to_string(population->getDrowned()), 500, 10);
 		application->DrawTextItem("Thirst: " + std::to_string(Schaap->thirstLevel()), 100, 710);

@@ -3,7 +3,6 @@
 #include "FWApplication.h"
 #include "Vertex.h"
 #include "Edge.h"
-#include "Rabbit.h"
 
 class Map
 {
@@ -11,11 +10,11 @@ public:
 	Map(const std::vector<std::string> mapText);
 	~Map();
 	void createMap();
-	void addRabbits(std::vector<Rabbit*> rabbits);
 	void show(FWApplication* application);
 	Vertex* getStartMister();
 	Vertex* getStartMisses();
 	Vertex* getCave();
+	std::vector<Vertex*> getVertices();
 
 private:
 	std::vector<std::string> mapText_;

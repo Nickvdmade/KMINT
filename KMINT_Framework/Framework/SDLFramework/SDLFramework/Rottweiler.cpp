@@ -132,11 +132,18 @@ int Rottweiler::thirstLevel()
 	return thirst_;
 }
 
+void Rottweiler::setPreyPopulation(RabbitPopulation* preyPopulation)
+{
+	rabbitPopulation_ = preyPopulation;
+	preyPopulation_ = rabbitPopulation_->getPopulation();
+}
+
 void Rottweiler::initialize()
 {
+	astar.clearVisited();
 	previousState_ = currentState_;
 	currentState_ = wander;
-	thirst_ = 0;
+	thirst_ = 95;
 	timesDrunk_ = 0;
 }
 
@@ -148,12 +155,59 @@ void Rottweiler::startState()
 
 bool Rottweiler::canSeePrey()
 {
+	for (Edge* edge : position_->GetEdges())
+	{
+		Vertex* other = edge->GetOther(position_);
+		if (other->getVisitors() > 0)
+		{
+			setPrey(other);
+			return true;
+		}
+		for (Edge* otherEdge : other->GetEdges())
+		{
+			Vertex* another = otherEdge->GetOther(other);
+			if (another->getVisitors() > 0)
+			{
+				setPrey(another);
+				return true;
+			}
+		}
+	}
 	return false;
 }
 
 bool Rottweiler::canEatPrey()
 {
+	if (position_->getVisitors() > 0)
+	{
+		setPrey(position_);
+		return true;
+	}
+	/*for (Edge* edge : position_->GetEdges())
+	{
+		Vertex* other = edge->GetOther(position_);
+		if (other->getVisitors() > 0)
+		{
+			setPrey(other);
+			return true;
+		}
+	}*/
 	return false;
+}
+
+void Rottweiler::setPrey(Vertex * position)
+{
+	for (Rabbit* prey : preyPopulation_)
+	{
+		if (prey->getPosition() == position)
+		{
+			if (prey_ != nullptr)
+				prey_->setHunted(false);
+			prey_ = prey;
+			prey_->setHunted(true);
+			return;
+		}
+	}
 }
 
 void Rottweiler::wandering()
@@ -174,6 +228,12 @@ void Rottweiler::wandering()
 
 void Rottweiler::drinkWater()
 {
+	if (canEatPrey())
+	{
+		previousState_ = currentState_;
+		currentState_ = eat;
+	}
+
 	thirst_ -= getWaterFromFavouriteOwner();
 	for (int i = 0; i < path_.size(); i++)
 		path_.pop();
@@ -181,8 +241,6 @@ void Rottweiler::drinkWater()
 	previousState_ = currentState_;
 	if (++timesDrunk_ == 2)
 		currentState_ = goToSleep;
-	else if (canEatPrey())
-		currentState_ = eat;
 	else if (canSeePrey())
 		currentState_ = hunt;
 	else
@@ -200,6 +258,11 @@ void Rottweiler::checkThirstLevel()
 
 void Rottweiler::findFavouriteOwner()
 {
+	if (canEatPrey())
+	{
+		previousState_ = currentState_;
+		currentState_ = eat;
+	}
 	if (position_ == owners_[favourite_]->getPosition())
 	{
 		astar.clearVisited();
@@ -218,12 +281,32 @@ void Rottweiler::findFavouriteOwner()
 
 void Rottweiler::huntPrey()
 {
-
+	if (position_ == prey_->getPosition())
+	{
+		astar.clearVisited();
+		previousState_ = currentState_;
+		currentState_ = eat;
+		inState_ = false;
+	}
+	else if (canEatPrey())
+	{
+		astar.clearVisited();
+		previousState_ = currentState_;
+		currentState_ = eat;
+		inState_ = false;
+	}
+	else
+	{
+		if (path_.empty())
+			path_ = astar.Search(position_, prey_->getPosition());
+		else
+			takeStep();
+	}
 }
 
 void Rottweiler::eatPrey()
 {
-	//rabbitPopulation->killRabbit(Rabbit* prey)
+	rabbitPopulation_->killRabbit(prey_, "eaten");
 	if (previousState_ == hunt)
 	{
 		previousState_ = currentState_;
@@ -241,6 +324,11 @@ void Rottweiler::eatPrey()
 
 void Rottweiler::findCave()
 {
+	if (canEatPrey())
+	{
+		previousState_ = currentState_;
+		currentState_ = eat;
+	}
 	if (position_ == cave_)
 	{
 		previousState_ = currentState_;

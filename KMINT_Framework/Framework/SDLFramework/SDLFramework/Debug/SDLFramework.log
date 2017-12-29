@@ -1,4 +1,39 @@
-﻿  Map.cpp
-c:\users\maike\source\repos\kmint\kmint_framework\framework\sdlframework\sdlframework\map.cpp(23): warning C4018: '<': signed/unsigned mismatch
-c:\users\maike\source\repos\kmint\kmint_framework\framework\sdlframework\sdlframework\map.cpp(26): warning C4018: '<': signed/unsigned mismatch
-  SDLFramework.vcxproj -> C:\Users\maike\Source\Repos\KMINT\KMINT_Framework\Framework\SDLFramework\Debug\SDLFramework.exe
+﻿  Rottweiler.cpp
+c:\users\maike\source\repos\kmint\kmint_framework\framework\sdlframework\sdlframework\rottweiler.cpp(238): warning C4018: '<': signed/unsigned mismatch
+  RabbitPopulation.cpp
+  Rabbit.cpp
+  Person.cpp
+c:\users\maike\source\repos\kmint\kmint_framework\framework\sdlframework\sdlframework\rottweiler.h(16): error C2065: 'Person': undeclared identifier
+c:\users\maike\source\repos\kmint\kmint_framework\framework\sdlframework\sdlframework\rottweiler.h(16): error C2059: syntax error: '>'
+c:\users\maike\source\repos\kmint\kmint_framework\framework\sdlframework\sdlframework\rottweiler.h(16): error C2976: 'std::vector': too few template arguments
+  c:\program files (x86)\microsoft visual studio\2017\enterprise\vc\tools\msvc\14.12.25827\include\vector(658): note: see declaration of 'std::vector'
+c:\users\maike\source\repos\kmint\kmint_framework\framework\sdlframework\sdlframework\rottweiler.h(53): error C2065: 'Person': undeclared identifier
+c:\users\maike\source\repos\kmint\kmint_framework\framework\sdlframework\sdlframework\rottweiler.h(53): error C2059: syntax error: '>'
+c:\users\maike\source\repos\kmint\kmint_framework\framework\sdlframework\sdlframework\rottweiler.h(53): error C2976: 'std::vector': too few template arguments
+  c:\program files (x86)\microsoft visual studio\2017\enterprise\vc\tools\msvc\14.12.25827\include\vector(658): note: see declaration of 'std::vector'
+  Mister.cpp
+c:\users\maike\source\repos\kmint\kmint_framework\framework\sdlframework\sdlframework\rottweiler.h(16): error C2065: 'Person': undeclared identifier
+c:\users\maike\source\repos\kmint\kmint_framework\framework\sdlframework\sdlframework\rottweiler.h(16): error C2059: syntax error: '>'
+c:\users\maike\source\repos\kmint\kmint_framework\framework\sdlframework\sdlframework\rottweiler.h(16): error C2976: 'std::vector': too few template arguments
+  c:\program files (x86)\microsoft visual studio\2017\enterprise\vc\tools\msvc\14.12.25827\include\vector(658): note: see declaration of 'std::vector'
+c:\users\maike\source\repos\kmint\kmint_framework\framework\sdlframework\sdlframework\rottweiler.h(53): error C2065: 'Person': undeclared identifier
+c:\users\maike\source\repos\kmint\kmint_framework\framework\sdlframework\sdlframework\rottweiler.h(53): error C2059: syntax error: '>'
+c:\users\maike\source\repos\kmint\kmint_framework\framework\sdlframework\sdlframework\rottweiler.h(53): error C2976: 'std::vector': too few template arguments
+  c:\program files (x86)\microsoft visual studio\2017\enterprise\vc\tools\msvc\14.12.25827\include\vector(658): note: see declaration of 'std::vector'
+  Misses.cpp
+c:\users\maike\source\repos\kmint\kmint_framework\framework\sdlframework\sdlframework\rottweiler.h(16): error C2065: 'Person': undeclared identifier
+c:\users\maike\source\repos\kmint\kmint_framework\framework\sdlframework\sdlframework\rottweiler.h(16): error C2059: syntax error: '>'
+c:\users\maike\source\repos\kmint\kmint_framework\framework\sdlframework\sdlframework\rottweiler.h(16): error C2976: 'std::vector': too few template arguments
+  c:\program files (x86)\microsoft visual studio\2017\enterprise\vc\tools\msvc\14.12.25827\include\vector(658): note: see declaration of 'std::vector'
+c:\users\maike\source\repos\kmint\kmint_framework\framework\sdlframework\sdlframework\rottweiler.h(53): error C2065: 'Person': undeclared identifier
+c:\users\maike\source\repos\kmint\kmint_framework\framework\sdlframework\sdlframework\rottweiler.h(53): error C2059: syntax error: '>'
+c:\users\maike\source\repos\kmint\kmint_framework\framework\sdlframework\sdlframework\rottweiler.h(53): error C2976: 'std::vector': too few template arguments
+  c:\program files (x86)\microsoft visual studio\2017\enterprise\vc\tools\msvc\14.12.25827\include\vector(658): note: see declaration of 'std::vector'
+  Main.cpp
+c:\users\maike\source\repos\kmint\kmint_framework\framework\sdlframework\sdlframework\main.cpp(43): warning C4244: 'argument': conversion from 'double' to 'const int', possible loss of data
+c:\users\maike\source\repos\kmint\kmint_framework\framework\sdlframework\sdlframework\main.cpp(45): warning C4244: 'argument': conversion from 'double' to 'const int', possible loss of data
+c:\users\maike\source\repos\kmint\kmint_framework\framework\sdlframework\sdlframework\main.cpp(47): warning C4244: 'argument': conversion from 'double' to 'const int', possible loss of data
+  Generating Code...
+c:\users\maike\source\repos\kmint\kmint_framework\framework\sdlframework\sdlframework\rottweiler.cpp(77): warning C4715: 'Rottweiler::currentState': not all control paths return a value
+  Skipping... (no relevant changes detected)
+  Map.cpp

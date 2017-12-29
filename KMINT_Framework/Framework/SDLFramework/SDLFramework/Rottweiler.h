@@ -4,9 +4,11 @@
 #include "StatesEnum.h"
 #include "Person.h"
 #include "Rabbit.h"
+#include "RabbitPopulation.h"
 #include "Astar.h"
 #include <chrono>
 #include <ctime>
+
 
 class Rottweiler
 {
@@ -19,12 +21,14 @@ public:
 	void updateState();
 	void raiseThirst();
 	int thirstLevel();
+	void setPreyPopulation(RabbitPopulation* preyPopulation);
 
 private:
 	void initialize();
 	void startState();
 	bool canSeePrey();
 	bool canEatPrey();
+	void setPrey(Vertex* position);
 	void wandering();
 	void drinkWater();
 	void checkThirstLevel();
@@ -48,6 +52,8 @@ private:
 
 	std::vector<Person*> owners_;
 	int favourite_;
+	std::vector<Rabbit*> preyPopulation_;
+	RabbitPopulation* rabbitPopulation_;
 	Rabbit* prey_;
 	std::stack<Edge*> path_;
 
