@@ -77,12 +77,6 @@ void Vertex::show(FWApplication* application) const
 	if(shortPath_)
 		application->SetColor(Color(255, 255, 0, 255));
 	application->DrawRect(xPosition_, yPosition_, 20, 20, true);
-	application->SetColor(Color(0, 0, 0, 255));
-	for (Edge* edge : edges_)
-	{
-		Vertex* vertex = edge->GetOther(this);
-		application->DrawLine(xPosition_ + 10, yPosition_ + 10, vertex->GetX() + 10, vertex->GetY() + 10);
-	}
 }
 
 void Vertex::setVisited(bool visited)
