@@ -1,7 +1,12 @@
-﻿  Vertex.cpp
-  Rottweiler.cpp
-c:\users\gebruiker\source\repos\kmint\kmint_framework\framework\sdlframework\sdlframework\rottweiler.cpp(238): warning C4018: '<': signed/unsigned mismatch
-  Person.cpp
+﻿  RabbitPopulation.cpp
+  Rabbit.cpp
   Generating Code...
-c:\users\gebruiker\source\repos\kmint\kmint_framework\framework\sdlframework\sdlframework\person.cpp(51): warning C4715: 'Person::currentState': not all control paths return a value
-  SDLFramework.vcxproj -> C:\Users\Gebruiker\Source\Repos\KMINT\KMINT_Framework\Framework\SDLFramework\Debug\SDLFramework.exe
+  Compiling...
+  Main.cpp
+c:\users\maike\source\repos\kmint\kmint_framework\framework\sdlframework\sdlframework\main.cpp(43): warning C4244: 'argument': conversion from 'double' to 'const int', possible loss of data
+c:\users\maike\source\repos\kmint\kmint_framework\framework\sdlframework\sdlframework\main.cpp(45): warning C4244: 'argument': conversion from 'double' to 'const int', possible loss of data
+c:\users\maike\source\repos\kmint\kmint_framework\framework\sdlframework\sdlframework\main.cpp(47): warning C4244: 'argument': conversion from 'double' to 'const int', possible loss of data
+  Generating Code...
+  Skipping... (no relevant changes detected)
+  Rottweiler.cpp
+  SDLFramework.vcxproj -> C:\Users\maike\Source\Repos\KMINT\KMINT_Framework\Framework\SDLFramework\Debug\SDLFramework.exe

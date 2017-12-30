@@ -149,8 +149,8 @@ void Rottweiler::initialize()
 	astar.clearVisited();
 	previousState_ = currentState_;
 	currentState_ = wander;
-	thirst_ = 0;
-	timesDrunk_ = 0;
+	thirst_ = 99;
+	timesDrunk_ = 1;
 }
 
 void Rottweiler::startState()

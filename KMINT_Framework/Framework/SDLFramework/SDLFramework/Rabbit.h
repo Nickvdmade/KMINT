@@ -13,12 +13,15 @@ public:
 	void show(FWApplication* application) const;
 	bool isDead() const;
 	std::string causeOfDeath() const;
-	void die(std::string cause);
+	void die(std::string cause, int order);
 	int getHeading() const;
 	void move(Vertex* position);
 	Vertex* getPosition() const;
 	void calculateHeading(Rabbit* closestRabbit, Rottweiler* dog, Vertex* closestWater);
 	void setHunted(bool hunted);
+	std::vector<float> getChromosone();
+	int getDieOrder();
+	void setDogAttraction(float dogAttraction);
 private:
 	void calculateOffset();
 	void calculateDogAttraction(Rottweiler* dog);
@@ -42,6 +45,7 @@ private:
 	int heading_;
 	bool hunted_;
 	std::map<int, float> directions_;
+	int dieOrder_;
 };
 
 enum heading 

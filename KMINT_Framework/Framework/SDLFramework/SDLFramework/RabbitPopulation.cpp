@@ -6,6 +6,7 @@ RabbitPopulation::RabbitPopulation(const int size)
 	, drowned_(0)
 	, eaten_(0)
 	, generation_(0)
+	, dieOrder_(0)
 {
 	stepSpeed_ = 2;
 }
@@ -27,7 +28,6 @@ void RabbitPopulation::createFirstGeneration(Map* map)
 void RabbitPopulation::createRandomGeneration()
 {
 	generation_++;
-	RandomGenerator random;
 	float dogAttraction; 
 	float waterAttraction;
 	float cohesion;
@@ -172,19 +172,24 @@ void RabbitPopulation::killRabbit(Rabbit * rabbit, const std::string cause)
 		eaten_++;
 	else if (cause == "drowned")
 		drowned_++;
-	rabbit->die(cause);
+	rabbit->die(cause, ++dieOrder_);
 }
 
 void RabbitPopulation::nextGeneration()
 {
-	//previousPopulation_ = population_;
-	for (Rabbit* rabbit : population_)
-		delete rabbit;
-	population_.clear();
-	createRandomGeneration();
+	generation_++;
+	//select parents
+	auto parents = selectParents();
+	//create the new generation from parents
+	createChildren(parents);
+	//every second generation mutate 5% of the population
+	if (generation_ % 2 == 0)
+		mutatePopulation(size_ / 20);
+	//place new generation on map
 	place();
 	eaten_ = 0;
 	drowned_ = 0;
+	dieOrder_= 0;
 }
 
 int RabbitPopulation::getGeneration() const
@@ -202,4 +207,61 @@ Rabbit* RabbitPopulation::findRabbit(Vertex* position)
 		}
 	}
 	return nullptr;
+}
+
+std::vector<Rabbit*> RabbitPopulation::selectParents()
+{
+	std::vector<Rabbit*> fitParents;
+	std::vector<Rabbit*> unfitParents;
+	//select half of population size as fit parents based on living rabbits, and longest living rabbits
+	for (Rabbit* rabbit : population_)
+	{
+		if (!rabbit->isDead())
+			fitParents.push_back(rabbit);
+		else if (rabbit->getDieOrder() > size_ / 2)
+			fitParents.push_back(rabbit);
+		else
+			unfitParents.push_back(rabbit);
+	}
+	population_.clear();
+	//add 10% of population of random unfitParents to fitParents
+	for (int i = 0; i < size_ / 10; i++)
+	{
+		int index = random.GetRandomNumber(0, unfitParents.size() - 1);
+		fitParents.push_back(unfitParents[index]);
+	}
+	unfitParents.clear();
+	return fitParents;
+}
+
+void RabbitPopulation::createChildren(std::vector<Rabbit*> parents)
+{	
+	for (int i = 0; i < size_; i++)
+	{
+		//get chromosone of 2 random different parents 
+		int mother = random.GetRandomNumber(0, parents.size() - 1);
+		int father = random.GetRandomNumber(0, parents.size() - 1);
+		while (father == mother)
+			father = random.GetRandomNumber(0, parents.size() - 1);
+		std::vector<float> motherChromosone = parents[mother]->getChromosone();
+		std::vector<float> fatherChromosone = parents[father]->getChromosone();
+
+		//use crossover to create new child
+		float dogAttraction = motherChromosone[0];
+		float waterAttraction = motherChromosone[1];
+		float cohesion = fatherChromosone[2];
+		float separation = fatherChromosone[3];
+		float alignment = fatherChromosone[4];
+		population_.push_back(new Rabbit(dogAttraction, waterAttraction, cohesion, separation, alignment));
+	}
+}
+
+void RabbitPopulation::mutatePopulation(int mutations)
+{
+	//mutate the dog attraction gene from rabbit
+	for (int i = 0; i < mutations; i++)
+	{
+		int index = random.GetRandomNumber(0, size_ - 1);
+		population_[index]->setDogAttraction(random.GetRandomFloat(-1.0, 1.0));
+	}
 }

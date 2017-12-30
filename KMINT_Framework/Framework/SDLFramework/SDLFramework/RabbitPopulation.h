@@ -25,16 +25,21 @@ private:
 	void place();
 	Rabbit* findClosestRabbit(Vertex* position);
 	static Vertex* findClosestWater(Vertex* position);
+	std::vector<Rabbit*> selectParents();
+	void createChildren(std::vector<Rabbit*> parents);
+	void mutatePopulation(int mutations);
 
 	int size_;
 	int drowned_;
 	int eaten_;
 	int generation_;
-	//std::vector<Rabbit*> previousPopulation_; //use for selecting parents for new population
 	std::vector<Rabbit*> population_;
 	std::vector<Vertex*> mapVertices_;
 	double stepSpeed_;
 	std::chrono::system_clock::time_point stepTime_;
 	std::chrono::duration<double> stepTimer_;
+	int dieOrder_;
+
+	RandomGenerator random;
 };
 

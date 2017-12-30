@@ -55,10 +55,11 @@ bool Rabbit::isDead() const
 	return dead_;
 }
 
-void Rabbit::die(const std::string cause)
+void Rabbit::die(const std::string cause, int order)
 {
 	dead_ = true;
 	causeOfDeath_ = cause;
+	dieOrder_ = order;
 	position_->removeVisitor();
 }
 
@@ -309,6 +310,27 @@ void Rabbit::calculateHeading(Rabbit* closestRabbit, Rottweiler* dog, Vertex* cl
 void Rabbit::setHunted(const bool hunted)
 {
 	hunted_ = hunted;
+}
+
+std::vector<float> Rabbit::getChromosone()
+{
+	std::vector<float> chromosone;
+	chromosone.push_back(dogAttraction_);
+	chromosone.push_back(waterAttraction_);
+	chromosone.push_back(cohesion_);
+	chromosone.push_back(separation_);
+	chromosone.push_back(alignment_);
+	return chromosone;
+}
+
+int Rabbit::getDieOrder()
+{
+	return dieOrder_;
+}
+
+void Rabbit::setDogAttraction(float dogAttraction)
+{
+	dogAttraction_ = dogAttraction;
 }
 
 void Rabbit::move(Vertex* position)
